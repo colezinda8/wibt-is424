@@ -7,17 +7,15 @@
 
   .wrapper {
     min-height: calc(100% - 7em);
-    background-color: #FFFFFF;
+    background-color: #b4a9b6;
     padding-top: 5em;
     margin-bottom: -3em; /* Must be equal to height of footer */
-    margin-right: 3%;
-    margin-left: 3%;
-    z-index: 1;
   }
 
   /* Navbar Styles */
   .navbar {
-    background-color: #FFFFFF;
+    background-color: #000000;
+    opacity: 80%;
     width: 90%;
     padding-right: 5%;
     padding-left: 5%;
@@ -28,7 +26,6 @@
     top: 0;
     padding-top: 1em;
     padding-bottom: 0.5em;
-    z-index: 2;
   }
 
   .navbar-right {
@@ -42,14 +39,14 @@
     font-weight: bold;
     font-size: 28px;
     font-family: "Playfair Display";
-    color: #7353ba;
+    color: #ffffff;
     text-decoration: none;
     margin-top: auto;
     margin-bottom: auto;
   }
 
   .nav-link {
-    color: #7353ba;
+    color: #ffffff;
     text-decoration: none;
     padding: 0.6em 0.75em;
     border-radius: 0.75em;
@@ -71,20 +68,19 @@
     height: 3em;
     width: 100%;
     padding-top: 2em;
-    background-color: #e2dbf0;
+    background-color: #424242;
     display: inline-flex;
-    font-size: 14px;
   }
 
   .footer-item {
-    color: #424242;
+    color: #b4a9b6;
     text-align: center;
     width: 33.33%;
     padding: auto 0;
   }
 
   .footer-link {
-    color: #424242;
+    color: #b4a9b6;
   }
 
   /* Content Styles */
@@ -92,21 +88,9 @@
     margin: 1em;
     padding: 1em;
     border-radius: 1em;
-    background-color: #e2dbf0;
-    color: #424242;
+    background-color: #ffffff;
   }
-
-  .event-list {
-    height: 30em;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
-
-  .event {
-
-  }
-
-  /* Grid Styles */
+  
   .row:after {
     content: "";
     display: table;
@@ -129,44 +113,8 @@
     min-width: 66%;
   }
 
-  .one-quarter {
-    width: 25%;
-    max-width: 25%;
-    min-width: 25%;
-  }
-
   .one-half {
     width: 50%;
     max-width: 50%;
     min-width: 50%;
-  }
-
-  .three-quarters {
-    width: 75%;
-    max-width: 75%;
-    min-width: 75%;
-  }
-
-  .one-fifth {
-    width: 20%;
-    max-width: 20%;
-    min-width: 20%;
-  }
-
-  .two-fifths {
-    width: 40%;
-    max-width: 40%;
-    min-width: 40%;
-  }
-
-  .three-fifths {
-    width: 60%;
-    max-width: 60%;
-    min-width: 60%;
-  }
-
-  .four-fifths {
-    width: 80%;
-    max-width: 80%;
-    min-width: 80%;
   }
