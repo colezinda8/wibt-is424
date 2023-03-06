@@ -91,19 +91,54 @@
   .card {
     margin: 1em;
     padding: 1em;
-    border-radius: 1em;
-    background-color: #e2dbf0;
+    border-radius: 0.5em;
+    background-color: #C7BAE3;
     color: #424242;
+    font-size: 16px;
+  }
+
+  .card-title {
+    color: #3B3B3B;
+    font-size: 24px;
   }
 
   .event-list {
-    height: 30em;
+    max-height: 30em;
     overflow-x: hidden;
     overflow-y: scroll;
   }
 
-  .event {
+  .event-list-title {
+    color: #7353ba;
+    font-size: 24px;
+    font-weight: bold;
+  }
 
+  .event {
+    padding: 0.75em;
+    margin-top: 0.5em;
+    background-color: #C7BAE3;
+    border-radius: 0.5em;
+    color: #424242;
+  }
+
+  .event-title {
+    color: #3B3B3B;
+    font-weight: bold;
+    font-size: normal;
+    padding-bottom: 0.5em;
+  }
+
+  .event-content {
+    color: #424242;
+    font-size: small;
+  }
+
+  .event-date {
+    color: #424242;
+    font-size: smaller;
+    text-align: right;
+    font-style: italic;
   }
 
   /* Grid Styles */
