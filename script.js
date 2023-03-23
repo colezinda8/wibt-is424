@@ -1,7 +1,9 @@
+function updateNavLinks() {
+    let urlParts = window.location.href.split('/');
+    let pageName = urlParts[urlParts.length - 1].replace('.html', '');
+    $('#' + pageName).addClass('active');
+}
+
 $( document ).ready(function() {
-    $('.nav-link').click(function(e) {
-        $('.nav-link').removeClass('active');
-        $(e.target).addClass('active');
-        window.location.href = $(e.target).attr('href');
-    });
+    updateNavLinks();
 });
