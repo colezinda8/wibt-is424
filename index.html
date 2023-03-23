@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Women in Business Technology</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <script
       src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -12,26 +16,40 @@
     ></script>
   </head>
   <body>
-    <header class="navbar">
-      <a href="index.html" class="nav-brand"> Women in Business Technology </a>
-      <ul class="navbar-right">
-        <li class="nav-item">
-          <a id="index" href="index.html" class="nav-link" aria-current="page"
-            >Home</a
+    <nav class="navbar is-transparent">
+      <div class="container navbar-wrapper">
+        <div class="navbar-brand">
+          <a href="index.html" class="nav-brand">
+            Women in Business Technology
+          </a>
+          <div
+            class="navbar-burger"
+            data-target="navbarExampleTransparentExample"
           >
-        </li>
-        <li><a id="about" href="about.html" class="nav-link">About Us</a></li>
-        <li>
-          <a id="leadership" href="leadership.html" class="nav-link"
-            >Leadership</a
-          >
-        </li>
-        <li><a id="join" href="join.html" class="nav-link">How to Join</a></li>
-        <li><a id="events" href="events.html" class="nav-link">Events</a></li>
-      </ul>
-    </header>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="navbarLinks" class="navbar-menu">
+          <div class="navbar-end">
+              <a id="index" href="index.html" class="navbar-item active"
+                >Home</a
+              >
+              <a id="about" href="about.html" class="navbar-item">About Us</a>
+              <a id="leadership" href="leadership.html" class="navbar-item"
+                >Leadership</a
+              >
+            <a id="join" href="join.html" class="navbar-item">How to Join</a>
+            <a id="events" href="events.html" class="navbar-item">Events</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    </nav>
     <!-- START OF PAGE CONTENT -->
-    <div class="wrapper">
+    <div class="container">
       <div class="row">
         <div class="column four-fifths">
           <div class="row">
@@ -157,15 +175,15 @@
       </div>
     </div>
     <!-- END OF PAGE CONTENT -->
-    <div class="footer">
-      <div class="footer-item">&copy; 2023 Women in Business Technology</div>
+    <footer class="footer">
+      <div class="footer-item">&copy;Women in Business Technology 2023</div>
       <div class="footer-item">
         <a class="footer-link" href="contact.html">Contact Us</a>
       </div>
       <div class="footer-item">
         <a class="footer-link" href="admin_portal.html">Admin Portal</a>
       </div>
-    </div>
+    </footer>
   </body>
   <footer>
     <script src="script.js"></script>

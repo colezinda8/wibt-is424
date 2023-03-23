@@ -1,41 +1,8 @@
-  /* Base Styles */
-  html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .wrapper {
-    min-height: calc(100% - 7em);
-    background-color: #FFFFFF;
-    padding-top: 5em;
-    margin-bottom: -3em; /* Must be equal to height of footer */
-    margin-right: 3%;
-    margin-left: 3%;
-    z-index: 1;
-  }
-
   /* Navbar Styles */
-  .navbar {
-    background-color: #FFFFFF;
-    width: 90%;
-    padding-right: 5%;
-    padding-left: 5%;
-    align-items: baseline;
-    display: inline-flex;
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding-top: 1em;
-    padding-bottom: 0.5em;
-    z-index: 2;
-  }
 
-  .navbar-right {
-    display: inline-flex;
-    margin-left: auto;
-    margin-right: 0;
-    list-style-type: none;
+  .navbar-wrapper {
+    padding-top: 1em;
+    padding-right: 5em;
   }
 
   .nav-brand {
@@ -48,22 +15,27 @@
     margin-bottom: auto;
   }
 
-  .nav-link {
+  .nav-brand:hover {
+    color: #7353ba !important;
+    opacity: 60%;
+  }
+
+  .navbar-item {
     color: #7353ba;
     text-decoration: none;
+  }
+
+  .navbar-item:hover {
+    color: #7353ba !important;
+    opacity: 60%;
+  }
+
+  .navbar-item.active {
+    color: #ffffff;
+    background-color: #7353ba !important;
     padding: 0.6em 0.75em;
     border-radius: 0.75em;
     margin: 0.25em;
-  }
-
-  .nav-link:hover {
-    color: #7353ba;
-    opacity: 80%;
-  }
-
-  .nav-link.active {
-    color: #ffffff;
-    background-color: #7353ba;
   }
 
   /* Footer Styles */
@@ -85,6 +57,11 @@
 
   .footer-link {
     color: #424242;
+    text-decoration: underline;
+  }
+
+  .footer-link:hover {
+    opacity: 60%;
   }
 
   /* Content Styles */
