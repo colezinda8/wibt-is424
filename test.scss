@@ -1,0 +1,287 @@
+// 1. Import the initial variables
+@import "../sass/utilities/initial-variables";
+@import "../sass/utilities/functions";
+
+// 2. Set your own initial variables
+// Update blue
+$blue: #72d0eb;
+// Add pink and its invert
+$pink: #ffb3b3;
+$pink-invert: #fff;
+// Add a serif family
+$family-serif: "Merriweather", "Georgia", serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $pink;
+$primary-invert: $pink-invert;
+// Use the existing orange as the danger color
+$danger: $orange;
+// Use the new serif family
+$family-primary: $family-serif;
+
+// 4. Setup your Custom Colors
+$wbit: #7353ba;
+$wibt-invert: findColorInvert($wibt);
+$linkedin: #0077b5;
+$linkedin-invert: findColorInvert($linkedin);
+$twitter: #55acee;
+$twitter-invert: findColorInvert($twitter);
+$github: #333;
+$github-invert: findColorInvert($github);
+
+// 5. Add new color variables to the color map.
+@import "../sass/utilities/derived-variables";
+$addColors: (
+  "wibt": (
+    $wibt,
+    $wibt-invert,
+  ),
+  "twitter": (
+    $twitter,
+    $twitter-invert,
+  ),
+  "linkedin": (
+    $linkedin,
+    $linkedin-invert,
+  ),
+  "github": (
+    $github,
+    $github-invert,
+  ),
+);
+$colors: map-merge($colors, $addColors);
+
+// 6. Import the rest of Bulma
+
+// Import Bulma first
+@import "bulma";
+// Import Component main Sass File
+@import "~@creativebulma/bulma-collapsible";
+
+/* Navbar Styles */
+
+.navbar-wrapper {
+  padding-top: 1em;
+  padding-right: 5em;
+}
+
+.nav-brand {
+  font-weight: bold;
+  font-size: 28px;
+  font-family: "Playfair Display";
+  color: #7353ba;
+  text-decoration: none;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.nav-brand:hover {
+  color: #7353ba !important;
+  opacity: 60%;
+}
+
+.navbar-item {
+  color: #7353ba;
+  text-decoration: none;
+}
+
+.navbar-item:hover {
+  color: #7353ba !important;
+  opacity: 60%;
+}
+
+.navbar-item.active {
+  color: #ffffff;
+  background-color: #7353ba !important;
+  padding: 0.6em 0.75em;
+  border-radius: 0.75em;
+  margin: 0.25em;
+}
+
+/* Footer Styles */
+.footer {
+  height: 3em;
+  width: 100%;
+  padding-top: 2em;
+  background-color: #c7bae3;
+  display: inline-flex;
+  font-size: 14px;
+}
+
+.footer-item {
+  color: #424242;
+  text-align: center;
+  width: 33.33%;
+  padding: auto 0;
+}
+
+.footer-link {
+  color: #424242;
+  text-decoration: underline;
+}
+
+.footer-link:hover {
+  opacity: 60%;
+}
+
+/* Content Styles */
+.card {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: #c7bae3;
+  color: #424242;
+  font-size: 16px;
+  min-height: 12em;
+}
+
+.card-title {
+  color: #3b3b3b;
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 0.5em;
+}
+
+.card-image {
+  max-width: 96%;
+  margin-top: 0.75em;
+  padding-right: 2%;
+  padding-left: 2%;
+}
+
+.card-content {
+  color: #424242;
+  font-size: normal;
+}
+
+.card-link {
+  color: #424242;
+  margin-top: 0.5em;
+  display: block;
+}
+
+.event-list {
+  max-height: 30em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.event-list-title {
+  color: #7353ba;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.event {
+  padding: 0.75em;
+  margin-top: 0.5em;
+  background-color: #c7bae3;
+  border-radius: 0.5em;
+  color: #424242;
+}
+
+.event-title {
+  color: #3b3b3b;
+  font-weight: bold;
+  font-size: normal;
+  padding-bottom: 0.5em;
+}
+
+.event-content {
+  color: #424242;
+  font-size: small;
+}
+
+.event-date {
+  color: #424242;
+  font-size: smaller;
+  text-align: right;
+  font-style: italic;
+}
+
+/* Grid Styles */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+}
+
+.one-third {
+  width: 33%;
+  max-width: 33%;
+  min-width: 33%;
+}
+
+.two-thirds {
+  width: 66%;
+  max-width: 66%;
+  min-width: 66%;
+}
+
+.one-quarter {
+  width: 25%;
+  max-width: 25%;
+  min-width: 25%;
+}
+
+.one-half {
+  width: 50%;
+  max-width: 50%;
+  min-width: 50%;
+}
+
+.three-quarters {
+  width: 75%;
+  max-width: 75%;
+  min-width: 75%;
+}
+
+.one-fifth {
+  width: 20%;
+  max-width: 20%;
+  min-width: 20%;
+}
+
+.two-fifths {
+  width: 40%;
+  max-width: 40%;
+  min-width: 40%;
+}
+
+.three-fifths {
+  width: 60%;
+  max-width: 60%;
+  min-width: 60%;
+}
+
+.four-fifths {
+  width: 80%;
+  max-width: 80%;
+  min-width: 80%;
+}
+
+#calendar {
+  overflow: hidden;
+  border: 1px solid lightgrey;
+}
+
+li {
+  margin: 2;
+  padding: 5px;
+  float: left;
+  display: block;
+  width: 14.2857%;
+  height: auto;
+  text-align: center;
+}
+
+li:hover {
+  border-radius: 5px;
+  background-color: #7353ba;
+  color: #ecf0f1;
+}
