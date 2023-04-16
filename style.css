@@ -75,6 +75,17 @@
   min-height: 12em;
 }
 
+.card1 {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: whitesmoke;
+  color: #424242;
+  font-size: 16px;
+  min-height: 12em;
+  text-align: center;
+}
+
 .card-title {
   color: #3b3b3b;
   font-size: 24px;
@@ -150,6 +161,11 @@
   float: left;
 }
 
+.column1 {
+  float: left;
+  width: 25%;
+}
+
 .one-third {
   width: 33%;
   max-width: 33%;
@@ -204,6 +220,13 @@
   min-width: 80%;
 }
 
+.four-fifthscolor {
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+  background-color: #c7bae3;
+}
+
 #calendar {
   overflow: hidden;
   border: 1px solid lightgrey;
@@ -223,4 +246,25 @@ li:hover {
   border-radius: 5px;
   background-color: #7353ba;
   color: #ecf0f1;
+}
+
+.italic {
+  font-style: italic;
+  font-size: smaller;
+}
+.eventHead {
+  text-align: center;
+  color: #7353ba;
+  font-weight: bold;
+}
+.speakerHead {
+  text-align: center;
+  color: rgb(52, 52, 52);
+  font-weight: bold;
+}
+
+.speakerDate {
+  margin-left: 0.5rem;
+  color: rgb(52, 52, 52);
+  font-style: italic;
 }
