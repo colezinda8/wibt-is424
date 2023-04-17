@@ -1,5 +1,4 @@
 /* Navbar Styles */
-
 .navbar-wrapper {
   padding-top: 1em;
   padding-right: 5em;
@@ -62,6 +61,12 @@
 
 .footer-link:hover {
   opacity: 60%;
+}
+
+.footer-icon {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
 }
 
 /* Content Styles */
