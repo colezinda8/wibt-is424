@@ -47,9 +47,5 @@ signinbtn.addEventListener('click', () => {
 
 signin_modalbg.addEventListener('click', () => {
     signin_modal.classList.remove('is-active');
+    r_e('signin_form').reset();
 });
-
-$('#signin_modal').on('close', function (x) {
-    console.log("succses");
-    $(this).find('form').trigger('reset');
-})
