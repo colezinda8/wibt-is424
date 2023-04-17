@@ -79,6 +79,7 @@
   margin: 1em;
   padding: 1em;
   border-radius: 0.5em;
+  border: 0.5px solid black;
   background-color: whitesmoke;
   color: #424242;
   font-size: 16px;
@@ -224,7 +225,7 @@
   margin: auto;
   width: 90%;
   padding: 10px;
-  background-color: #c7bae3;
+  background-color: #7453ba1d;
 }
 
 #calendar {
@@ -252,19 +253,48 @@ li:hover {
   font-style: italic;
   font-size: smaller;
 }
+
 .eventHead {
   text-align: center;
   color: #7353ba;
   font-weight: bold;
+  font-size: x-large;
 }
+
+.eventHead1 {
+  text-align: center;
+  font-style: italic;
+}
+
+.eventHead4 {
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+}
+
+.eventHead2 {
+  text-align: center;
+  font-size: large;
+  text-decoration: underline;
+}
+
+.eventHead3 {
+  text-align: center;
+}
+
 .speakerHead {
   text-align: center;
   color: rgb(52, 52, 52);
   font-weight: bold;
+  font-size: x-large;
 }
 
 .speakerDate {
   margin-left: 0.5rem;
   color: rgb(52, 52, 52);
   font-style: italic;
+}
+
+img {
+  border: 1.25px solid black;
 }
