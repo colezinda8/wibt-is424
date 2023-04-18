@@ -19,6 +19,19 @@ function myFunc(id) {
 
 
 
+
+
+var UC = 0;
+
+function UserCheck() {
+    if (UC == 0) {
+        r_e('signinbtn').innerHTML = `Admin Portal`
+    } else if (UC == 1) {
+        r_e('signinbtn').innerHTML = `Log Out`
+    }
+};
+r_e('index').onload = UserCheck();
+
 function r_e(id) {
     return document.querySelector(`#${id}`)
 }
@@ -31,6 +44,8 @@ login_submit.addEventListener('click', () => {
     r_e('signin_form').reset();
     console.log("hello");
     r_e('signinbtn').innerHTML = `Log Out`;
+    UC = 1;
+    console.log(UC);
 
 });
 
@@ -60,12 +75,12 @@ login_submit.addEventListener('click', () => {
 
 
 
-
 signinbtn.addEventListener('click', () => {
     if (r_e('signinbtn').innerHTML == "Admin Portal") {
         signin_modal.classList.add('is-active');
     } else if (r_e('signinbtn').innerHTML == "Log Out") {
         r_e('signinbtn').innerHTML = `Admin Portal`;
+        UC = 0;
     }
 });
 
