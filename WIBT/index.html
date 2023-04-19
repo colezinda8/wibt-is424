@@ -176,7 +176,7 @@
       </div>
     </div>
     <div class="event-list-title">Learn more about WIBT</div>
-    <div class="level" style="overflow-x: scroll;margin-bottom: 5em;">
+    <div class="level" style="margin-bottom: 4em;">
       <div class="mini-card">
         <p class="mini-card-title">
           Learn How to Join Our Club!
@@ -240,7 +240,27 @@
   </footer>
 </body>
 <footer>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCtCVG7aHc8mqYUa61X3MejlUYHQSYApgM",
+      authDomain: "wibt-60aff.firebaseapp.com",
+      projectId: "wibt-60aff",
+      storageBucket: "wibt-60aff.appspot.com",
+      messagingSenderId: "157489052248",
+      appId: "1:157489052248:web:e2c63c229bec07d174e82d"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
   <script src="script.js"></script>
+  <script src="slideshow.js"></script>
 </footer>
 
 </html>

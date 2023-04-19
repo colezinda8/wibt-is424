@@ -6,7 +6,7 @@
 
 .nav-brand {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 36px;
   font-family: "Playfair Display";
   color: #7353ba;
   text-decoration: none;
@@ -22,6 +22,10 @@
 .navbar-item {
   color: #7353ba;
   text-decoration: none;
+  padding: 0.6em 0.75em;
+  border-radius: 0.75em;
+  margin: 0.25em;
+  font-size: 18px;
 }
 
 .navbar-item:hover {
@@ -150,7 +154,7 @@
 
 .event-list-title {
   color: #7353ba;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -267,7 +271,7 @@
   border: 1px solid lightgrey;
 }
 
-li {
+.calendar-slot {
   margin: 2;
   padding: 5px;
   float: left;
@@ -277,7 +281,7 @@ li {
   text-align: center;
 }
 
-li:hover {
+.calendar-slot:hover {
   border-radius: 5px;
   background-color: #7353ba;
   color: #ecf0f1;
@@ -329,9 +333,6 @@ li:hover {
   font-style: italic;
 }
 
-img {
-  border: 1.25px solid black;
-}
 
 /* Slideshow Styles */
 * {box-sizing:border-box}
