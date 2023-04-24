@@ -5,7 +5,6 @@ function updateNavLinks() {
 }
 
 $(document).ready(function () {
-  SlideShow(slidePosition);
   updateNavLinks();
 });
 
@@ -89,26 +88,3 @@ signin_modalbg.addEventListener('click', () => {
     signin_modal.classList.remove('is-active');
     r_e('signin_form').reset();
 });
-// Slideshow functions 
-var slidePosition = 1;
-
-// forward/Back controls
-function plusSlides(n) {
-  SlideShow(slidePosition += n);
-}
-
-//  images controls
-function currentSlide(n) {
-  SlideShow(slidePosition = n);
-}
-
-function SlideShow(n) {
-  var i;
-  var slides = document.getElementsByClassName("Containers");
-  if (n > slides.length) {slidePosition = 1}
-  if (n < 1) {slidePosition = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  slides[slidePosition-1].style.display = "flex";
-}
