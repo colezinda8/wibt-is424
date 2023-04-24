@@ -4,46 +4,37 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us</title>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styling/style.css" />
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <style>
-    nav {
-      margin-bottom: 30px;
-    }
-
-    .accordion-button {
-      background-color: #e3ddf1;
+    .content-section-header {
       color: #3b3b3b;
-      width: 100%;
-      border-radius: 1em;
-      padding: 1em;
       font-size: 24px;
+      font-weight: bold;
       text-align: left;
-      border: none;
+      margin-bottom: 1em;
     }
 
-    .accordion-button:hover {
-      opacity: 80%;
-    }
-
-    .accordion-content {
+    .content-section {
       background-color: #ececec;
       color: #3b3b3b;
-      width: 100%;
       border-radius: 1em;
       padding: 1em;
       font-size: 18px;
       text-align: left;
       border: none;
     }
+
+    .level-item {
+      width: 48%;
+      max-width: 48%;
+    }
   </style>
 </head>
 
 <body>
-
   <!---------------------------------------sign in modal -------->
   <div class="modal" id="signin_modal">
     <div class="modal-background" id="signin_modalbg"></div>
@@ -56,8 +47,6 @@
           <div class="control">
             <input type="email" id="email_">
           </div>
-
-
         </div>
         <!-- Password -->
         <div class="field">
@@ -66,7 +55,6 @@
             <input type="password" id="password_">
           </div>
         </div>
-
         <!-- submit -->
         <div class="field">
           <div class="control">
@@ -78,9 +66,6 @@
       </form>
     </div>
   </div>
-
-
-
   <nav class="navbar is-transparent">
     <div class="container navbar-wrapper">
       <div class="navbar-brand">
@@ -113,68 +98,70 @@
         <h1 style="font-size: 30px;font-weight: bolder;color: #7353ba;">
           <b>Learn About Our Club!</b>
         </h1>
-        <p class="">Click to learn more!</p>
       </div>
     </div>
     <div class="level">
-      <button class="accordion-button" onclick="myFunc('Demo1')">
-        <b>Mission
-          Statement</b>
-      </button>
-    </div>
-    <div id="Demo1" class="w3-hide level">
-      <div class="accordion-content">
-        <p><b>Our Mission:</b> Women In Business Technology UW-Madison strives to increase female representation and
-          break
-          down barriers in the Business Technology industry, shaping the future environment for women entering the
-          field.
-        </p>
-        <br>
-        <p><b>Our events:</b></p>
-        <ul style="list-style-type: disc;margin-left:1.5em;">
-          <li>Speakers</li>
-          <li>Professional Development</li>
-          <li>Networking</li>
-          <li>Diversity, Equity, and Inclusion (DEI)</li>
-          <li>Community Service</li>
-        </ul>
+      <div class="level-item">
+        <div class="content-section" style="height: 25rem;">
+          <h1 class="content-section-header">Mission
+            Statement</h1>
+          <p>Women In Business Technology UW-Madison strives to increase female representation and
+            break
+            down barriers in the Business Technology industry, shaping the future environment for women entering the
+            field.
+          </p>
+          <br>
+          <p><b>Our events:</b></p>
+          <ul style="list-style-type: disc;margin-left:1.5em;">
+            <li>Speakers</li>
+            <li>Professional Development</li>
+            <li>Networking</li>
+            <li>Diversity, Equity, and Inclusion (DEI)</li>
+            <li>Community Service</li>
+          </ul>
+        </div>
+      </div>
+      <div class="level-item">
+        <div style="background-color: b4a9b6;border-radius:1rem;width:100%;align-content: center;display:flex;">
+          <img src="images/wibt_square_logo.png" alt="WIBT logo" style="height: 25rem;border-radius:1rem;margin:auto;">
+
+        </div>
       </div>
     </div>
     <div class="level">
-      <button onclick="myFunc('Demo2')" class="accordion-button">
-        <b>DEI</b></button>
-    </div>
-    <div id="Demo2" class="w3-hide level">
-      <div class="accordion-content">
-        <p>Women in Business Technology at UW-Madison aims to foster an inclusive community that encourages, supports,
-          and
-          celebrates diverse identities. As a student organization, we develop and implement meaningful DEI programming
-          to
-          emphasize the value of diversity within a group. By hosting wide-ranging DEI events such as speakers,
-          workshops,
-          and social gatherings, we strive to cultivate a sense of belonging and increase representation of marginalized
-          groups in the business technology industry.</p>
+      <div class="level-item">
+        <div class="content-section" style="height: 30rem;">
+          <h1 class="content-section-header">Diversity, Equity & Inclusion (DEI)</h1>
+          <p>Women in Business Technology at UW-Madison aims to foster an inclusive community that encourages, supports,
+            and
+            celebrates diverse identities. As a student organization, we develop and implement meaningful DEI
+            programming
+            to
+            emphasize the value of diversity within a group. By hosting wide-ranging DEI events such as speakers,
+            workshops,
+            and social gatherings, we strive to cultivate a sense of belonging and increase representation of
+            marginalized
+            groups in the business technology industry.</p>
+        </div>
       </div>
-    </div>
-    <div class="level">
-      <button onclick="myFunc('Demo3')" class="accordion-button">
-        <b>Community Service</b></button>
-    </div>
-    <div id="Demo3" class="w3-hide level">
-      <div class="accordion-content">
-        <p>Helping women pursue what they want is an important value we hold in our organization. This includes
-          supporting
-          the mothers of Dane County. Elizabeth House is a non-profit organization and a member of the National
-          Maternity
-          Housing Coalition that helps support mothers in financial hardships by providing daycare, a safe environment
-          for
-          the mom and her child, support networks, effective parenting skills, food, and so many other amazing
-          resources.
-          <br><br>
-          We selected Elizabeth House because of its devotion to help mothers become emotionally healthy and
-          self-sufficient. Supporting mothers through these difficult times with goal-oriented action planning makes a
-          positive and sustainable impact on their lives. We are so excited to be supporting an organization like this!
-        </p>
+      <div class="level-item">
+        <div class="content-section" style="height: 30rem;">
+          <h1 class="content-section-header">Community Service</h1>
+          <p>Helping women pursue what they want is an important value we hold in our organization. This includes
+            supporting
+            the mothers of Dane County. Elizabeth House is a non-profit organization and a member of the National
+            Maternity
+            Housing Coalition that helps support mothers in financial hardships by providing daycare, a safe environment
+            for
+            the mom and her child, support networks, effective parenting skills, food, and so many other amazing
+            resources.
+            <br><br>
+            We selected Elizabeth House because of its devotion to help mothers become emotionally healthy and
+            self-sufficient. Supporting mothers through these difficult times with goal-oriented action planning makes a
+            positive and sustainable impact on their lives. We are so excited to be supporting an organization like
+            this!
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -211,7 +198,7 @@
   </footer>
 </body>
 <footer>
-  <script src="script.js"></script>
+  <script src="scripts/script.js"></script>
 </footer>
 </body>
 

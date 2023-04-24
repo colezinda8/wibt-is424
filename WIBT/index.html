@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Women in Business Technology</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styling/style.css" />
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/121e5d3c23.js" crossorigin="anonymous"></script>
@@ -73,7 +73,6 @@
           <a id="leadership" href="leadership.html" class="navbar-item">Leadership</a>
           <a id="join" href="join.html" class="navbar-item">How to Join</a>
           <a id="events" href="events.html" class="navbar-item">Events</a>
-          <a id="events" href="speakers.html" class="navbar-item">Speakers</a>
         </div>
       </div>
     </div>
@@ -81,8 +80,6 @@
   </nav>
   <!-- START OF PAGE CONTENT -->
   <div class="container">
-    <br>
-    <br>
     <div class="level">
       <div class="card" style="width:49%;border-radius:1em;">
         <img style="border:none;border-radius:1em;height:358px;" src="images/WIBT_Banner_LightBG.png">
@@ -90,19 +87,19 @@
       <div class="card" style="width:49%;border-radius:1em;background-color: #e3ddf1 !important;">
         <div class="slideshow-container fade">
           <div class="Containers">
-            <img src="images/homepage1.jpg" class="slideshow-image">
+            <img src="images/homepageSlideshow/homepage1.jpg" class="slideshow-image">
           </div>
           <div class="Containers">
-            <img src="images/homepage2.jpg" class="slideshow-image">
+            <img src="images/homepageSlideshow/homepage2.jpg" class="slideshow-image">
           </div>
           <div class="Containers">
-            <img src="images/homepage3.jpg" class="slideshow-image">
+            <img src="images/homepageSlideshow/homepage3.jpg" class="slideshow-image">
           </div>
           <div class="Containers">
-            <img src="images/homepage4.jpg" class="slideshow-image">
+            <img src="images/homepageSlideshow/homepage4.jpg" class="slideshow-image">
           </div>
           <div class="Containers">
-            <img src="images/homepage5.jpg" class="slideshow-image">
+            <img src="images/homepageSlideshow/homepage5.jpg" class="slideshow-image">
           </div>
           <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
           <a class="forward" onclick="plusSlides(1)">&#10095;</a>
@@ -260,8 +257,8 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
   </script>
-  <script src="script.js"></script>
-  <script src="slideshow.js"></script>
+  <script src="scripts/script.js"></script>
+  <script src="scripts/slideshow.js"></script>
 </footer>
 
 </html>
