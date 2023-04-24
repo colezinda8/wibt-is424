@@ -21,6 +21,96 @@
       text-align: left;
       border: none;
     }
+
+    .level-item {
+      width: 49%;
+      max-width: 49%;
+    }
+
+    /* Slideshow Styles */
+    * {
+      box-sizing: border-box
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 100%;
+      position: relative;
+      margin: auto;
+      max-height: 35rem;
+      min-height: 35rem;
+    }
+
+    /* Make the images invisible by default */
+    .Containers {
+      display: none;
+      max-height: 35rem;
+      min-height: 35rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .slideshow-image {
+      height: 35rem;
+      border: none;
+    }
+
+    /* forward & Back buttons */
+    .Back,
+    .forward {
+      cursor: pointer;
+      position: absolute;
+      top: 48%;
+      width: auto;
+      margin-top: -23px;
+      padding: 17px;
+      color: grey;
+      font-weight: bold;
+      font-size: 19px;
+      transition: 0.4s ease;
+      border-radius: 0 5px 5px 0;
+      user-select: none;
+    }
+
+    /* Place the "forward button" to the right */
+    .forward {
+      right: 0;
+      border-radius: 4px 0 0 4px;
+    }
+
+    /*when the user hovers,add a black background with some little opacity */
+    .Back:hover,
+    .forward:hover {
+      background-color: rgba(66, 66, 66, 0.6);
+    }
+
+    /* Faint animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.4s;
+      animation-name: fade;
+      animation-duration: 1.4s;
+    }
+
+    @-webkit-keyframes fade {
+      from {
+        opacity: .5
+      }
+
+      to {
+        opacity: 2
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .5
+      }
+
+      to {
+        opacity: 2
+      }
+    }
   </style>
 </head>
 
@@ -88,31 +178,49 @@
         </h1>
       </div>
     </div>
-    <div class="level">
-      <div class="content-box">
-        <p>
-          <b>Fall 2023: Come visit us at the org fairs!</b>
-        </p>
-        <ul style="list-style-type: disc;margin-left:1.5em;">
-          <li>Kohl Center, Date: TBD</li>
-          <li>Grainger, Date: TBD</li>
-        </ul>
+    <div class="level" style="margin-bottom: 30px;">
+      <div class="level-item" style="display:block;height:35rem;">
+        <div class="content-box">
+          <p>
+            <b>Fall 2023: Come visit us at the org fairs!</b>
+          </p>
+          <ul style="list-style-type: disc;margin-left:1.5em;">
+            <li>Kohl Center, Date: TBD</li>
+            <li>Grainger, Date: TBD</li>
+          </ul>
+          <p style="margin-top: 1rem;">
+            <b>Can’t make it? No worries!</b>
+          </p>
+          <ul style="list-style-type: disc;margin-left:1.5em;">
+            <li>Email wituwmadison@gmail.com to get put on our email list! <b>or</b></li>
+            <li>DM us on Instagram @wituwmadison</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="level">
-      <div class="content-box">
-        <p>
-          <b>Can’t make it? No worries!</b>
-        </p>
-        <ul style="list-style-type: disc;margin-left:1.5em;">
-          <li>Email wituwmadison@gmail.com to get put on our email list! <b>or</b></li>
-          <li>DM us on Instagram @wituwmadison</li>
-        </ul>
-      </div>
+      <di class="level-item">
+        <div style="width:100%;border-radius:1em;background-color: #ececec !important;">
+          <div class="slideshow-container fade">
+            <div class="Containers">
+              <img src="images/howtojoinSlideshow/IMG_5059.jpg" class="slideshow-image">
+            </div>
+            <div class="Containers">
+              <img src="images/howtojoinSlideshow/IMG_1902.jpg" class="slideshow-image">
+            </div>
+            <div class="Containers">
+              <img src="images/howtojoinSlideshow/IMG_2766.jpg" class="slideshow-image">
+            </div>
+            <div class="Containers">
+              <img src="images/howtojoinSlideshow/IMG_9827.jpg" class="slideshow-image">
+            </div>
+            <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="forward" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+        </div>
+      </di>
     </div>
   </div>
   <!-- END OF PAGE CONTENT -->
-  <footer class="footer" style="position:absolute;bottom:0;">
+  <footer class="footer">
     <div class="footer-item">&copy;Women in Business Technology 2023</div>
     <div class="footer-item">
       <p>
@@ -142,6 +250,7 @@
 </body>
 <footer>
   <script src="scripts/script.js"></script>
+  <script src="scripts/slideshow.js"></script>
 </footer>
 </body>
 
