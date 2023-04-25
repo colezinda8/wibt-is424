@@ -7,14 +7,10 @@
   <title>Join The Club</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styling/style.css" />
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <style>
-    nav {
-      margin-bottom: 30px;
-    }
-
     .content-box {
       background-color: #ececec;
       color: #3b3b3b;
@@ -24,6 +20,135 @@
       font-size: 18px;
       text-align: left;
       border: none;
+    }
+
+    .level-item {
+      width: 49%;
+      max-width: 49%;
+    }
+
+    /* Slideshow Styles */
+    * {
+      box-sizing: border-box
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 100%;
+      position: relative;
+      margin: auto;
+      max-height: 35rem;
+      min-height: 35rem;
+    }
+
+    /* Make the images invisible by default */
+    .Containers {
+      display: none;
+      max-height: 35rem;
+      min-height: 35rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .slideshow-image {
+      height: 35rem;
+      border: none;
+    }
+
+    /* forward & Back buttons */
+    .Back,
+    .forward {
+      cursor: pointer;
+      position: absolute;
+      top: 48%;
+      width: auto;
+      margin-top: -23px;
+      padding: 17px;
+      color: grey;
+      font-weight: bold;
+      font-size: 19px;
+      transition: 0.4s ease;
+      border-radius: 0 5px 5px 0;
+      user-select: none;
+    }
+
+    /* Place the "forward button" to the right */
+    .forward {
+      right: 0;
+      border-radius: 4px 0 0 4px;
+    }
+
+    /*when the user hovers,add a black background with some little opacity */
+    .Back:hover,
+    .forward:hover {
+      background-color: rgba(66, 66, 66, 0.6);
+    }
+
+    /* Faint animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.4s;
+      animation-name: fade;
+      animation-duration: 1.4s;
+    }
+
+    @-webkit-keyframes fade {
+      from {
+        opacity: .5
+      }
+
+      to {
+        opacity: 2
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .5
+      }
+
+      to {
+        opacity: 2
+      }
+    }
+
+    .left-column {
+      display: block;
+      height: 35rem;
+    }
+
+    @media only screen and (max-width: 720px) {
+      .level-item {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .left-column {
+        height: 15rem;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 100%;
+        position: relative;
+        margin: auto;
+        max-height: 20rem;
+        min-height: 20rem;
+      }
+
+      /* Make the images invisible by default */
+      .Containers {
+        display: none;
+        max-height: 20rem;
+        min-height: 20rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .slideshow-image {
+        height: 20rem;
+        border: none;
+      }
     }
   </style>
 </head>
@@ -89,7 +214,7 @@
           <a id="about" href="about.html" class="navbar-item">About Us</a>
           <a id="leadership" href="leadership.html" class="navbar-item">Leadership</a>
           <a id="join" href="join.html" class="navbar-item active">How to Join</a>
-          <a id="events" href="events.html" class="navbar-item">Events</a>
+          <a id="events" href="events.html" class="navbar-item">Speakers & Events</a>
         </div>
       </div>
   </nav>
@@ -97,36 +222,54 @@
   <div class="container">
     <div class="level">
       <div>
-        <h1 style="font-size: 30px;font-weight: bolder;color: #7353ba;">
+        <h1 class="page-title">
           <b>How to Join Our Club!</b>
         </h1>
       </div>
     </div>
-    <div class="level">
-      <div class="content-box">
-        <p>
-          <b>Fall 2023: Come visit us at the org fairs!</b>
-        </p>
-        <ul style="list-style-type: disc;margin-left:1.5em;">
-          <li>Kohl Center, Date: TBD</li>
-          <li>Grainger, Date: TBD</li>
-        </ul>
+    <div class="level" style="margin-bottom: 30px;align-items:start;">
+      <div class="level-item" class="left-column">
+        <div class="content-box">
+          <p>
+            <b>Fall 2023: Come visit us at the org fairs!</b>
+          </p>
+          <ul style="list-style-type: disc;margin-left:1.5em;">
+            <li>Kohl Center, Date: TBD</li>
+            <li>Grainger, Date: TBD</li>
+          </ul>
+          <p style="margin-top: 1rem;">
+            <b>Can’t make it? No worries!</b>
+          </p>
+          <ul style="list-style-type: disc;margin-left:1.5em;">
+            <li>Email wituwmadison@gmail.com to get put on our email list! <b>or</b></li>
+            <li>DM us on Instagram @wituwmadison</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="level">
-      <div class="content-box">
-        <p>
-          <b>Can’t make it? No worries!</b>
-        </p>
-        <ul style="list-style-type: disc;margin-left:1.5em;">
-          <li>Email wituwmadison@gmail.com to get put on our email list! <b>or</b></li>
-          <li>DM us on Instagram @wituwmadison</li>
-        </ul>
-      </div>
+      <di class="level-item">
+        <div style="width:100%;border-radius:1em;background-color: #ececec !important;">
+          <div class="slideshow-container fade">
+            <div class="Containers">
+              <img src="images/howtojoinSlideshow/IMG_5059.jpg" class="slideshow-image">
+            </div>
+            <div class="Containers">
+              <img src="images/howtojoinSlideshow/IMG_1902.jpg" class="slideshow-image">
+            </div>
+            <div class="Containers">
+              <img src="images/howtojoinSlideshow/IMG_2766.jpg" class="slideshow-image">
+            </div>
+            <div class="Containers">
+              <img src="images/howtojoinSlideshow/IMG_9827.jpg" class="slideshow-image">
+            </div>
+            <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="forward" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+        </div>
+      </di>
     </div>
   </div>
   <!-- END OF PAGE CONTENT -->
-  <footer class="footer" style="position:absolute;bottom:0;">
+  <footer class="footer" style="margin-top:10em;">
     <div class="footer-item">&copy;Women in Business Technology 2023</div>
     <div class="footer-item">
       <p>
@@ -134,18 +277,18 @@
             width="36" height="36" viewBox="0 0 24 24">
             <path
               d="M15.233 5.488c-.843-.038-1.097-.046-3.233-.046s-2.389.008-3.232.046c-2.17.099-3.181 1.127-3.279 3.279-.039.844-.048 1.097-.048 3.233s.009 2.389.047 3.233c.099 2.148 1.106 3.18 3.279 3.279.843.038 1.097.047 3.233.047 2.137 0 2.39-.008 3.233-.046 2.17-.099 3.18-1.129 3.279-3.279.038-.844.046-1.097.046-3.233s-.008-2.389-.046-3.232c-.099-2.153-1.111-3.182-3.279-3.281zm-3.233 10.62c-2.269 0-4.108-1.839-4.108-4.108 0-2.269 1.84-4.108 4.108-4.108s4.108 1.839 4.108 4.108c0 2.269-1.839 4.108-4.108 4.108zm4.271-7.418c-.53 0-.96-.43-.96-.96s.43-.96.96-.96.96.43.96.96-.43.96-.96.96zm-1.604 3.31c0 1.473-1.194 2.667-2.667 2.667s-2.667-1.194-2.667-2.667c0-1.473 1.194-2.667 2.667-2.667s2.667 1.194 2.667 2.667zm4.333-12h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm.952 15.298c-.132 2.909-1.751 4.521-4.653 4.654-.854.039-1.126.048-3.299.048s-2.444-.009-3.298-.048c-2.908-.133-4.52-1.748-4.654-4.654-.039-.853-.048-1.125-.048-3.298 0-2.172.009-2.445.048-3.298.134-2.908 1.748-4.521 4.654-4.653.854-.04 1.125-.049 3.298-.049s2.445.009 3.299.048c2.908.133 4.523 1.751 4.653 4.653.039.854.048 1.127.048 3.299 0 2.173-.009 2.445-.048 3.298z"
-              fill="#424242" />
+              fill="#fff" />
           </svg></a>
         <a href="mailto:wituwmadison@gmail.com" class="footer-icon"><svg xmlns="http://www.w3.org/2000/svg" width="36"
             height="36" viewBox="0 0 24 24">
             <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"
-              fill="#424242" />
+              fill="#fff" />
           </svg></a>
         <a href="https://www.linkedin.com/company/wibt-uwmadison/" class="footer-icon"> <svg
             xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
             <path
               d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-              fill="#424242" />
+              fill="#fff" />
           </svg></a>
       </p>
     </div>
@@ -155,7 +298,8 @@
   </footer>
 </body>
 <footer>
-  <script src="script.js"></script>
+  <script src="scripts/script.js"></script>
+  <script src="scripts/slideshow.js"></script>
 </footer>
 </body>
 

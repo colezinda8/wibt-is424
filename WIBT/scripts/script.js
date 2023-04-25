@@ -1,3 +1,22 @@
+// // Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// // TODO: Add SDKs for Firebase products that you want to use
+// // https://firebase.google.com/docs/web/setup#available-libraries
+
+// // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCtCVG7aHc8mqYUa61X3MejlUYHQSYApgM",
+//   authDomain: "wibt-60aff.firebaseapp.com",
+//   projectId: "wibt-60aff",
+//   storageBucket: "wibt-60aff.appspot.com",
+//   messagingSenderId: "157489052248",
+//   appId: "1:157489052248:web:e2c63c229bec07d174e82d"
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+
+
 function updateNavLinks() {
     let urlParts = window.location.href.split("/");
     let pageName = urlParts[urlParts.length - 1].replace(".html", "");
@@ -5,7 +24,18 @@ function updateNavLinks() {
 }
 
 $(document).ready(function () {
+
+    // Check for click events on the navbar burger icon
+    $(".navbar-burger").click(function () {
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+
+    });
     updateNavLinks();
+
+
 });
 
 function myFunc(id) {
