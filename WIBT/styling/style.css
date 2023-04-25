@@ -1,30 +1,74 @@
+.modal-content {
+  width: 20em;
+  border-radius: 1em;
+}
+
+.p-6 {
+  padding: 1.5rem !important;
+}
+
+.control input {
+  width: 100%;
+}
+
+.m-3 {
+  background-color: #7b5882 !important;
+  color: #fff;
+  padding: 0.5em 1em;
+  margin: 1em 0 !important;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+
+.m-3:hover {
+  background-color: #ececec !important;
+  color: #7b5882 !important;
+}
+
 nav {
   margin-bottom: 30px;
+}
+
+@media (max-width: 720px) {
+  .nav-brand {
+    font-weight: bold;
+    font-size: 24px;
+    font-family: "Playfair Display";
+    color: #7b5882;
+    text-decoration: none;
+    margin-left: 0.5em;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    font-weight: bolder;
+    color: #7b5882;
+    margin-left: 1em;
+  }
 }
 
 /* Navbar Styles */
 .navbar-wrapper {
   padding-top: 1em;
-  padding-right: 5em;
 }
 
 .nav-brand {
   font-weight: bold;
   font-size: 36px;
   font-family: "Playfair Display";
-  color: #7353ba;
+  color: #7b5882;
   text-decoration: none;
   margin-top: auto;
   margin-bottom: auto;
 }
 
 .nav-brand:hover {
-  color: #7353ba !important;
+  color: #7b5882 !important;
   opacity: 60%;
 }
 
 .navbar-item {
-  color: #7353ba;
+  color: #7b5882;
   text-decoration: none;
   padding: 0.6em 0.75em;
   border-radius: 0.75em;
@@ -33,13 +77,13 @@ nav {
 }
 
 .navbar-item:hover {
-  color: #7353ba !important;
+  color: #7b5882 !important;
   opacity: 60%;
 }
 
 .navbar-item.active {
   color: #ffffff;
-  background-color: #7353ba !important;
+  background-color: #7b5882 !important;
   padding: 0.6em 0.75em;
   border-radius: 0.75em;
   margin: 0.25em;
@@ -50,20 +94,22 @@ nav {
   height: 3em;
   width: 100%;
   padding-top: 2em;
-  background-color: #c7bae3;
+  background-color: #b4a9b6;
+  color: #fff;
   display: inline-flex;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .footer-item {
-  color: #424242;
+  color: #fff;
   text-align: center;
   width: 33.33%;
   padding: auto 0;
 }
 
 .footer-link {
-  color: #424242;
+  color: #fff;
   text-decoration: underline;
 }
 
@@ -78,6 +124,12 @@ nav {
 }
 
 /* Content Styles */
+.page-title {
+  font-size: 30px;
+  font-weight: bolder;
+  color: #7b5882;
+}
+
 .card {
   background-color: #c7bae3;
   color: #424242;
@@ -157,7 +209,7 @@ nav {
 }
 
 .event-list-title {
-  color: #7353ba;
+  color: #7b5882;
   font-size: 30px;
   font-weight: bold;
 }
