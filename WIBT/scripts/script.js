@@ -118,11 +118,11 @@ event_modalbg.addEventListener("click", () => {
 //})
 
 event_submit.addEventListener("click", () => {
-  let title = document.querySelector("#title");
-  let date = document.querySelector("#date");
-  let hour = document.querySelector("#hour");
-  let minute = document.querySelector("minute");
-  let ampm = document.querySelector("ampm");
+  let title = document.querySelector("#title").innerHTML;
+  let date = document.querySelector("#date").innerHTML;
+  let hour = document.querySelector("#hour").innerHTML;
+  let minute = document.querySelector("minute").innerHTML;
+  let ampm = document.querySelector("ampm").innerHTML;
   let time = hour + " " + minute + " " + ampm;
 
   let new_event = {
