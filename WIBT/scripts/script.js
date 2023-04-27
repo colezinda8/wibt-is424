@@ -18,9 +18,7 @@
 // Import the functions you need from the SDKs you need
 
 // Import the functions you need from the SDKs you need
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
 //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
 //import { getAuth } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
 const firebaseConfig = {
@@ -30,12 +28,13 @@ const firebaseConfig = {
   storageBucket: "wibt-website.appspot.com",
   messagingSenderId: "620909080156",
   appId: "1:620909080156:web:4f81b6f258a535e833c099",
-  measurementId: "G-YRG9SDJ7DN"
+  measurementId: "G-YRG9SDJ7DN",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 firebase.initializeApp(firebaseConfig);
 let auth = firebase.auth();
+let db = firebase.firestore();
 console.log(auth);
 
 function updateNavLinks() {
