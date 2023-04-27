@@ -219,32 +219,46 @@
   </div>
 
   <!--Event Add Modal-->
-<div class="modal" id="event_modal">
+<div class="modal is-active" id="event_modal">
   <div class="modal-background" id="event_modalbg"></div>
   <div class="modal-content p-6 has-background-white">
-    <h1 class="is-size-3 title">Admin Portal</h1>
+    <h1 class="is-size-3 title">Add an Event</h1>
     <form id="event_form">
-      <!-- Email -->
+      <!-- event title-->
       <div class="field">
-        <label class="label">Username</label>
+        <label class="label">Title</label>
         <div class="control">
           <input type="text" id="title">
         </div>
 
 
       </div>
-      <!-- Password -->
+      <!--Date-->
       <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
-          <input class="input" id="">
+        <div class="container">
+          <label class="label">Date</label>
+          <input type="text" name="foo">
+      </div>
+      </div>
+      <!--Time-->
+      <div class="field">
+        <label class="label">Hour</label>
+        <input type="text">
+        <label class="label">Minute</label>
+        <input type="text">
+        
+        <div class="select">
+          <select>
+            <option>PM</option>
+            <option>AM</option>
+          </select>
         </div>
       </div>
 
       <!-- submit -->
       <div class="field">
         <div class="control">
-          <a class="m-3 is-link" id="event_submit">Login</a>
+          <a class="m-3 is-link" id="event_submit">Add</a>
         </div>
       </div>
       <div class="error has-text-danger">
