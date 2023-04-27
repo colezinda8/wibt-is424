@@ -15,6 +15,9 @@
 
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
+// Import the functions you need from the SDKs you need
+
+
 
 
 function updateNavLinks() {
@@ -68,13 +71,13 @@ login_submit.addEventListener('click', (e) => {
     e.preventDefault();
     //alert('test');
 
-    //    let email = r_e("email_").value;
-    //    let password = r_e("password_").value;
-    //    firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
+    let email = r_e("email_").value;
+    let password = r_e("password_").value;
+    auth.createUserWithEmailAndPassword(email, password).then((user) => {
 
-    //console.log(`${user.user.email}  is created`);
-    //        console.log(user);
-    //    })
+        //console.log(`${user.user.email}  is created`);
+        console.log(user);
+    })
     //.catch(err => {
     //signup_modal.querySelector('.error').innerHTML = err.message;
 
@@ -91,36 +94,15 @@ login_submit.addEventListener('click', (e) => {
 function UserCheck() {
     if (UC == 0) {
         r_e('signinbtn').innerHTML = `Admin Portal`
-        user_add_div.classList.add('is-hidden');
+        //        user_add_div.classList.add('is-hidden');
     } else if (UC == 1) {
         r_e('signinbtn').innerHTML = `Log Out`
-        user_add_div.classList.remove('is-hidden');
+        //      user_add_div.classList.remove('is-hidden');
     }
 };
 
 
-//e.preventDefault();
-//alert('test');
 
-//let email = r_e("email_").value;
-//let password = r_e("password_").value;
-//auth.signInWithEmailAndPassword(email, password).then((user) => {
-
-//console.log(`${user.user.email}  is created`);
-
-
-//configure_message_bar(`${user.user.email}  is signed in`);
-//r_e('signin_form').reset();
-//r_e('signin_modal').classList.remove('is-active');
-
-//}).catch(err => {
-//signin_modal.querySelector('.error').innerHTML = err.message;
-
-
-
-
-//r_e('signup_form').requestFullscreen();
-//or
 
 
 
