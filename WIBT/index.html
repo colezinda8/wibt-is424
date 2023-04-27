@@ -231,6 +231,40 @@
       </form>
     </div>
   </div>
+<!--Event Add Modal-->
+<div class="modal" id="event_modal">
+  <div class="modal-background" id="event_modalbg"></div>
+  <div class="modal-content p-6 has-background-white">
+    <h1 class="is-size-3 title">Admin Portal</h1>
+    <form id="event_form">
+      <!-- Email -->
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+          <input type="text" id="title">
+        </div>
+
+
+      </div>
+      <!-- Password -->
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <input class="input" id="">
+        </div>
+      </div>
+
+      <!-- submit -->
+      <div class="field">
+        <div class="control">
+          <a class="m-3 is-link" id="event_submit">Login</a>
+        </div>
+      </div>
+      <div class="error has-text-danger">
+      </div>
+    </form>
+  </div>
+</div>
 
   <nav class="navbar is-transparent">
     <div class="container navbar-wrapper">
@@ -415,6 +449,8 @@
     </div>
     <div class="footer-item">
       <a id="signinbtn" class="footer-link"></a>
+      <p><button id="eventbtn" class="button
+        is-small is-rounded is-hidden">Add Event</button></p>
     </div>
   </footer>
 </body>
