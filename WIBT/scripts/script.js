@@ -16,69 +16,58 @@
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 
-
 function updateNavLinks() {
-    let urlParts = window.location.href.split("/");
-    let pageName = urlParts[urlParts.length - 1].replace(".html", "");
-    $("#" + pageName).addClass("active");
+  let urlParts = window.location.href.split("/");
+  let pageName = urlParts[urlParts.length - 1].replace(".html", "");
+  $("#" + pageName).addClass("active");
 }
 
 $(document).ready(function () {
-
-    // Check for click events on the navbar burger icon
+  // Check for click events on the navbar burger icon
   $(".navbar-burger").click(function () {
-
     // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
     $(".navbar-burger").toggleClass("is-active");
     $(".navbar-menu").toggleClass("is-active");
-
   });
   updateNavLinks();
-
-  
 });
 
 function myFunc(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
 }
-
-
-
-
 
 var UC = 0;
 
 function UserCheck() {
-    if (UC == 0) {
-        r_e('signinbtn').innerHTML = `Admin Portal`
-    } else if (UC == 1) {
-        r_e('signinbtn').innerHTML = `Log Out`
-    }
-};
-r_e('index').onload = UserCheck();
+  if (UC == 0) {
+    r_e("signinbtn").innerHTML = `Admin Portal`;
+  } else if (UC == 1) {
+    r_e("signinbtn").innerHTML = `Log Out`;
+  }
+}
+r_e("index").onload = UserCheck();
 
 function r_e(id) {
-    return document.querySelector(`#${id}`)
+  return document.querySelector(`#${id}`);
 }
-let signinbtn = document.querySelector('#signinbtn');
-let signin_modal = document.querySelector('#signin_modal');
-let signin_modalbg = document.querySelector('#signin_modalbg');
+let signinbtn = document.querySelector("#signinbtn");
+let signin_modal = document.querySelector("#signin_modal");
+let signin_modalbg = document.querySelector("#signin_modalbg");
 
-login_submit.addEventListener('click', () => {
-    signin_modal.classList.remove('is-active');
-    r_e('signin_form').reset();
-    console.log("hello");
-    r_e('signinbtn').innerHTML = `Log Out`;
-    UC = 1;
-    console.log(UC);
-
+login_submit.addEventListener("click", () => {
+  signin_modal.classList.remove("is-active");
+  eventbtn.classList.remove("is-hidden");
+  r_e("signin_form").reset();
+  console.log("hello");
+  r_e("signinbtn").innerHTML = `Log Out`;
+  UC = 1;
+  console.log(UC);
 });
-
 
 //e.preventDefault();
 //alert('test');
@@ -89,7 +78,6 @@ login_submit.addEventListener('click', () => {
 
 //console.log(`${user.user.email}  is created`);
 
-
 //configure_message_bar(`${user.user.email}  is signed in`);
 //r_e('signin_form').reset();
 //r_e('signin_modal').classList.remove('is-active');
@@ -97,24 +85,29 @@ login_submit.addEventListener('click', () => {
 //}).catch(err => {
 //signin_modal.querySelector('.error').innerHTML = err.message;
 
-
-
-
 //r_e('signup_form').requestFullscreen();
 //or
 
-
-
-signinbtn.addEventListener('click', () => {
-    if (r_e('signinbtn').innerHTML == "Admin Portal") {
-        signin_modal.classList.add('is-active');
-    } else if (r_e('signinbtn').innerHTML == "Log Out") {
-        r_e('signinbtn').innerHTML = `Admin Portal`;
-        UC = 0;
-    }
+signinbtn.addEventListener("click", () => {
+  if (r_e("signinbtn").innerHTML == "Admin Portal") {
+    signin_modal.classList.add("is-active");
+  } else if (r_e("signinbtn").innerHTML == "Log Out") {
+    r_e("signinbtn").innerHTML = `Admin Portal`;
+    eventbtn.classList.add("is-hidden");
+    UC = 0;
+  }
 });
 
-signin_modalbg.addEventListener('click', () => {
-    signin_modal.classList.remove('is-active');
-    r_e('signin_form').reset();
+signin_modalbg.addEventListener("click", () => {
+  signin_modal.classList.remove("is-active");
+  r_e("signin_form").reset();
+});
+
+eventbtn.addEventListener("click", () => {
+  event_modal.classList.add("is-active");
+});
+
+event_modalbg.addEventListener("click", () => {
+  event_modal.classList.remove("is-active");
+  r_e("event_form").reset();
 });
