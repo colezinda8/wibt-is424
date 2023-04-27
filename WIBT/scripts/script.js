@@ -30,7 +30,7 @@ const firebaseConfig = {
   storageBucket: "wibt-website.appspot.com",
   messagingSenderId: "620909080156",
   appId: "1:620909080156:web:4f81b6f258a535e833c099",
-  measurementId: "G-YRG9SDJ7DN"
+  measurementId: "G-YRG9SDJ7DN",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -161,6 +161,7 @@ HEAD
 ===
 =
 });
+
 
 // let homeEvents = document.querySelector("#homeEvents");
 // let eventsEvents = document.querySelector("#eventsEvents");
