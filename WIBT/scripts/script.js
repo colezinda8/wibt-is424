@@ -152,3 +152,12 @@ event_submit.addEventListener("click", () => {
   };
   db.collection("events").add(new_event);
 });
+
+db.collection("events")
+  .get()
+  .then((response) => {
+    let element = response.docs;
+    element.forEach((e) => {
+      console.log(e.data().Title);
+    });
+  });
