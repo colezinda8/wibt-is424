@@ -17,6 +17,27 @@
 // const app = initializeApp(firebaseConfig);
 // Import the functions you need from the SDKs you need
 
+// Import the functions you need from the SDKs you need
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+//import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
+//import { getAuth } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
+const firebaseConfig = {
+  apiKey: "AIzaSyABqmr8_UbI6eoET593lRbqvmB_XxUIIMY",
+  authDomain: "wibt-website.firebaseapp.com",
+  projectId: "wibt-website",
+  storageBucket: "wibt-website.appspot.com",
+  messagingSenderId: "620909080156",
+  appId: "1:620909080156:web:4f81b6f258a535e833c099",
+  measurementId: "G-YRG9SDJ7DN"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+let auth = firebase.auth();
+console.log(auth);
+
 function updateNavLinks() {
   let urlParts = window.location.href.split("/");
   let pageName = urlParts[urlParts.length - 1].replace(".html", "");
