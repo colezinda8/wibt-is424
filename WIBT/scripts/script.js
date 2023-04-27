@@ -20,6 +20,9 @@
 
 
 
+
+
+
 function updateNavLinks() {
     let urlParts = window.location.href.split("/");
     let pageName = urlParts[urlParts.length - 1].replace(".html", "");
@@ -63,7 +66,7 @@ login_submit.addEventListener('click', (e) => {
 
     let email = r_e("email_").value;
     let password = r_e("password_").value;
-    auth.createUserWithEmailAndPassword(email, password).then((user) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
 
         //console.log(`${user.user.email}  is created`);
         console.log(user);
@@ -108,14 +111,14 @@ signin_modalbg.addEventListener("click", () => {
     r_e("signin_form").reset();
 });
 
-eventbtn.addEventListener("click", () => {
-    event_modal.classList.add("is-active");
-});
+//eventbtn.addEventListener("click", () => {
+//    event_modal.classList.add("is-active");
+//});
 
-event_modalbg.addEventListener("click", () => {
-    event_modal.classList.remove("is-active");
-    r_e("event_form").reset();
-});
+//event_modalbg.addEventListener("click", () => {
+//    event_modal.classList.remove("is-active");
+//    r_e("event_form").reset();
+//});
 
 ///user sign in
 
