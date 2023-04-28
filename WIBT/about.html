@@ -101,30 +101,48 @@
       <h1 class="is-size-3 title">Admin Portal</h1>
       <form id="signin_form">
         <!-- Email -->
-        <div class="field">
-          <label class="label">Username</label>
+        <div class="field" id="email_bar">
+          <label class="label">Email</label>
           <div class="control">
             <input type="email" id="email_">
           </div>
         </div>
         <!-- Password -->
-        <div class="field">
+        <div class="field" id="password_bar">
           <label class="label">Password</label>
           <div class="control">
             <input type="password" id="password_">
           </div>
         </div>
         <!-- submit -->
-        <div class="field">
+        <div class="field" id="submit_btn">
+          <br>
           <div class="control">
             <a class="m-3 is-link" id="login_submit">Login</a>
           </div>
         </div>
+        <br>
+        <div class="field" id="user_add_div">
+          <div class="control">
+            <a class="m-3 is-link" id="user_add">Add User</a>
+          </div>
+        </div>
+
+        <div class="field" id="cancel_btn">
+          <br>
+          <div class="control">
+            <a class="m-3 is-link">Cancel</a>
+          </div>
+        </div>
+
         <div class="error has-text-danger">
         </div>
       </form>
+
     </div>
   </div>
+
+
   <nav class="navbar is-transparent">
     <div class="container navbar-wrapper">
       <div class="navbar-brand">
