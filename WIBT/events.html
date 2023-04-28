@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Events</title>
   <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.1/dist/css/datepicker-bulma.min.css">
+    href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.1/dist/css/datepicker-bulma.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
   <link rel="stylesheet" href="styling/style.css" />
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -183,29 +183,7 @@
 </head>
 
 <body>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
-    //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
-    //import { getAuth } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
-    const firebaseConfig = {
-    apiKey: "AIzaSyABqmr8_UbI6eoET593lRbqvmB_XxUIIMY",
-    authDomain: "wibt-website.firebaseapp.com",
-    projectId: "wibt-website",
-    storageBucket: "wibt-website.appspot.com",
-    messagingSenderId: "620909080156",
-    appId: "1:620909080156:web:4f81b6f258a535e833c099",
-    measurementId: "G-YRG9SDJ7DN"
-        };
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-firebase.initializeApp(firebaseConfig);
-let auth = firebase.auth();
-console.log(auth);
-  </script>
+
   <!---------------------------------------sign in modal -------->
   <div class="modal" id="signin_modal">
     <div class="modal-background" id="signin_modalbg"></div>
@@ -242,53 +220,55 @@ console.log(auth);
   </div>
 
   <!--Event Add Modal-->
-<div class="modal" id="event_modal">
-  <div class="modal-background" id="event_modalbg"></div>
-  <div class="modal-content p-6 has-background-white">
-    <h1 class="is-size-3 title">Add an Event</h1>
-    <form id="event_form">
-      <!-- event title-->
-      <div class="field">
-        <label class="label">Title</label>
-        <div class="control">
-          <input type="text" id="title">
+  <div class="modal" id="event_modal">
+    <div class="modal-background" id="event_modalbg"></div>
+    <div class="modal-content p-6 has-background-white">
+      <h1 class="is-size-3 title">Add an Event</h1>
+      <form id="event_form">
+        <!-- event title-->
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input type="text" id="title">
+          </div>
+
+
+        </div>
+        <!--Date-->
+        <div class="field">
+          <div class="container">
+            <label class="label">Date</label>
+            <input type="text" name="foo" id="date">
+          </div>
+        </div>
+        <!--Time-->
+        <div class="field">
+          <label class="label">Hour</label>
+          <input type="text" id="hour">
+          <label class="label">Minute</label>
+          <input type="text" id="minute">
+          <p><br>
+            <div class="select">
+              <select id="ampm">
+                <option>PM</option>
+                <option>AM</option>
+              </select>
+            </div>
+          </p>
+
         </div>
 
-
-      </div>
-      <!--Date-->
-      <div class="field">
-        <div class="container">
-          <label class="label">Date</label>
-          <input type="text" name="foo" id="date">
-      </div>
-      </div>
-      <!--Time-->
-      <div class="field">
-        <label class="label">Hour</label>
-        <input type="text" id="hour">
-        <label class="label">Minute</label>
-        <input type="text" id="minute">
-        <p><br><div class="select">
-          <select id="ampm">
-            <option>PM</option>
-            <option>AM</option>
-          </select>
-        </div></p>
-        
-      </div>
-
-      <!-- submit -->
-      <div class="field">
-        <div class="control">
-          <a class="m-3 is-link" id="event_submit">Add</a>
+        <!-- submit -->
+        <div class="field">
+          <div class="control">
+            <a class="m-3 is-link" id="event_submit">Add</a>
+          </div>
         </div>
-      </div>
-      <div class="error has-text-danger">
-      </div>
-    </form>
+        <div class="error has-text-danger">
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
   <nav class="navbar is-transparent">
     <div class="container navbar-wrapper">
@@ -654,7 +634,7 @@ console.log(auth);
   </footer>
 </body>
 <footer>
-  <script src="scripts/script.js"></script>
+  <script type="module" src="scripts/script.js"></script>
   <script>
     $(document).ready(function () {
       // script for accordion functionality
@@ -678,12 +658,12 @@ console.log(auth);
   </script>
   <script>
     $(document).ready(function () {
-        const elem = document.querySelector('input[name="foo"]');
-        const datepicker = new Datepicker(elem, {
-            // ...options
-        });
+      const elem = document.querySelector('input[name="foo"]');
+      const datepicker = new Datepicker(elem, {
+        // ...options
+      });
     });
-</script>
+  </script>
 </footer>
 
 </html>

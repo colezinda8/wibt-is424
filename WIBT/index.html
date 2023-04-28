@@ -200,26 +200,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
-    //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
-    //import { getAuth } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
-    const firebaseConfig = {
-      apiKey: "AIzaSyABqmr8_UbI6eoET593lRbqvmB_XxUIIMY",
-      authDomain: "wibt-website.firebaseapp.com",
-      projectId: "wibt-website",
-      storageBucket: "wibt-website.appspot.com",
-      messagingSenderId: "620909080156",
-      appId: "1:620909080156:web:4f81b6f258a535e833c099",
-      measurementId: "G-YRG9SDJ7DN"
-    };
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    firebase.initializeApp(firebaseConfig);
-    let auth = firebase.auth();
-    console.log(auth);
-  </script>
+
   <!---------------------------------------sign in modal -------->
   <div class="modal" id="signin_modal">
     <div class="modal-background" id="signin_modalbg"></div>
@@ -344,9 +325,11 @@
         </div>
       </div>
     </div>
+    <div id="test"></div>
     <div class="event-list-title">Upcoming Events</div>
-    <div class="level" style="overflow-x: scroll;">
-      <div class="event">
+    <div id="homeEventsTest" class="level" style="overflow-x: scroll;">
+
+      <!-- <div class="event">
         <div class="event-title">Speaker from Apple</div>
         <div class="event-content">
           Praesent suscipit dictum sagittis. Nulla dolor augue,
@@ -409,7 +392,7 @@
           pellentesque sed risus sed, rhoncus feugiat ipsum.
         </div>
         <div class="event-date">10/12/2023 8:00pm</div>
-      </div>
+      </div> -->
     </div>
     <div class="event-list-title">Learn more about WIBT</div>
     <div class="level" style="margin-bottom: 4em;">
@@ -477,7 +460,7 @@
   </footer>
 </body>
 <footer>
-  <script src="scripts/script.js"></script>
+  <script type="module" src="scripts/script.js"></script>
   <script src="scripts/slideshow.js"></script>
 </footer>
 
