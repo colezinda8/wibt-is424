@@ -80,6 +80,7 @@ function UserCheck() {
     //        user_add_div.classList.add('is-hidden');
   } else if (UC == 1) {
     r_e("signinbtn").innerHTML = `Log Out`;
+    eventbtn.classList.add("is-active");
     //      user_add_div.classList.remove('is-hidden');
   }
 }
