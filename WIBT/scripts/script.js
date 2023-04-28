@@ -119,9 +119,9 @@ signin_modalbg.addEventListener("click", () => {
   r_e("signin_form").reset();
 });
 
-eventbtn.addEventListener("click", () => {
-  event_modal.classList.add("is-active");
-});
+// eventbtn.addEventListener("click", () => {
+//   event_modal.classList.add("is-active");
+// });
 
 event_modalbg.addEventListener("click", () => {
   event_modal.classList.remove("is-active");
@@ -153,11 +153,93 @@ event_submit.addEventListener("click", () => {
   db.collection("events").add(new_event);
 });
 
-db.collection("events")
-  .get()
-  .then((response) => {
-    let element = response.docs;
-    element.forEach((e) => {
-      console.log(e.data().Title);
+function Events(ID) {
+  db.collection("events")
+    .get()
+    .then((response) => {
+      let eventCard = "";
+      let element = response.docs;
+      element.forEach((e) => {
+        let title1 = e.data().Title;
+        let time1 = e.data().Date;
+        eventCard += `<div class="mini-card">`;
+        eventCard += `<p class="mini-card-title">${title1}</p>`;
+        eventCard += `<div class="event-date">${time1}</div>`;
+        eventCard += `</div>`;
+        document.querySelector(ID).innerHTML = eventCard;
+      });
     });
-  });
+}
+
+Events("#homeEvents");
+Events("#eventsEvents");
+
+function previousSpeakers() {
+  db.collection("prevSpeakers")
+    .get()
+    .then((response) => {
+      let speakerCard = "";
+      let element = response.docs;
+      element.forEach((e) => {
+        // let image = e.data().IMAGE;
+        let name = e.data().Name;
+        let position = e.data().position;
+        let comp = e.data().Company;
+        let sem = e.data().semester;
+        let test = document.getElementById(sem);
+        if (test == null) {
+          speakerCard += `<div id="${sem}">`;
+          speakerCard += `<h2 class="section-title">${sem}</h2>`;
+          speakerCard += `<div class="row">`;
+          speakerCard += `<div class="speaker-card">`;
+          // speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
+          speakerCard += `<div class="speaker-name">${name}</div>`;
+          speakerCard += `<div class="speaker-position">${position}</div>`;
+          speakerCard += `<div class="speaker-company">${comp}</div>`;
+          speakerCard += `</div>`;
+          speakerCard += `</div>`;
+          speakerCard += `</div>`;
+          document.querySelector("#prevSpeakers").innerHTML = speakerCard;
+        } else {
+          console.log("fail");
+        }
+      });
+    });
+}
+
+// function previousSpeakers() {
+//   db.collection("prevSpeakers")
+//     .get()
+//     .then((response) => {
+//       let speakerCard = "";
+//       let element = response.docs;
+//       let semester = [];
+//       element.forEach((e) => {
+//         // let image = e.data().IMAGE;
+//         let name = e.data().Name;
+//         let position = e.data().position;
+//         let comp = e.data().Company;
+//         let sem = e.data().semester;
+//         if (semester.includes(sem)) {
+//           let test = "test";
+//         } else {
+//           semester.push(sem);
+//           speakerCard += `<div id="${sem}">`;
+//           speakerCard += `<h2 class="section-title">${sem}</h2>`;
+//           speakerCard += `<div class="row">`;
+//           speakerCard += `<div class="speaker-card">`;
+//           // speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
+//           speakerCard += `<div class="speaker-name">${name}</div>`;
+//           speakerCard += `<div class="speaker-position">${position}</div>`;
+//           speakerCard += `<div class="speaker-company">${comp}</div>`;
+//           speakerCard += `</div>`;
+//           speakerCard += `</div>`;
+//           speakerCard += `</div>`;
+//           document.querySelector("#prevSpeakers").innerHTML = speakerCard;
+//         }
+//         console.log(semester);
+//       });
+//     });
+// }
+
+previousSpeakers();
