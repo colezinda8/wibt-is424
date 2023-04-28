@@ -34,8 +34,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 firebase.initializeApp(firebaseConfig);
 let auth = firebase.auth();
-let db = firebase.firestore();
-console.log(auth);
+//let db = firebase.firestore();
+console.log(auth.currentUser);
 
 function updateNavLinks() {
   let urlParts = window.location.href.split("/");
@@ -62,8 +62,9 @@ function myFunc(id) {
   }
 }
 
-var UC = 0;
-r_e("index").onload = UserCheck();
+//--------------------------------SIGN UP--------------------------------------------------------
+
+
 
 function r_e(id) {
   return document.querySelector(`#${id}`);
@@ -71,54 +72,99 @@ function r_e(id) {
 let signinbtn = document.querySelector("#signinbtn");
 let signin_modal = document.querySelector("#signin_modal");
 let signin_modalbg = document.querySelector("#signin_modalbg");
+let user_add = document.querySelector("#user_add");
+let cancel_btn = document.querySelector("#cancel_btn");
 
-login_submit.addEventListener("click", (e) => {
-  e.preventDefault();
-  //alert('test');
-
-  let email = r_e("email_").value;
-  let password = r_e("password_").value;
-  auth.createUserWithEmailAndPassword(email, password).then((user) => {
-    //console.log(`${user.user.email}  is created`);
-    console.log(user);
-  });
-  //.catch(err => {
-  //signup_modal.querySelector('.error').innerHTML = err.message;
-
-  // })
-  signin_modal.classList.remove("is-active");
-  //console.log("hello");
-  r_e("signinbtn").innerHTML = `Log Out`;
-  //r_e('user_add').innerHTML = `Add User`;
-  UC = 1;
-  r_e("signin_form").reset();
-});
-
-function UserCheck() {
-  if (UC == 0) {
-    r_e("signinbtn").innerHTML = `Admin Portal`;
-    //        user_add_div.classList.add('is-hidden');
-  } else if (UC == 1) {
-    r_e("signinbtn").innerHTML = `Log Out`;
-    eventbtn.classList.add("is-active");
-    //      user_add_div.classList.remove('is-hidden');
-  }
-}
 
 signinbtn.addEventListener("click", () => {
-  if (r_e("signinbtn").innerHTML == "Admin Portal") {
-    signin_modal.classList.add("is-active");
-  } else if (r_e("signinbtn").innerHTML == "Log Out") {
-    r_e("signinbtn").innerHTML = `Admin Portal`;
-    eventbtn.classList.add("is-hidden");
-    UC = 0;
-  }
+  signin_modal.classList.add("is-active");
 });
+
 
 signin_modalbg.addEventListener("click", () => {
   signin_modal.classList.remove("is-active");
   r_e("signin_form").reset();
 });
+
+login_submit.addEventListener("click", (e) => {
+
+  if (auth.currentUser) {
+    auth.signOut().then(() => {
+
+      console.log("ahahahahah");
+    })
+  } else {
+    e.preventDefault();
+    //alert('test');
+    let email = r_e("email_").value;
+    let password = r_e("password_").value;
+    auth.signInWithEmailAndPassword(email, password).then((user) => {
+      //console.log(`${user.user.email}  is created`);
+      console.log(user);
+    });
+    //.catch(err => {
+    //signup_modal.querySelector('.error').innerHTML = err.message;
+
+    // })
+  }
+  signin_modal.classList.remove("is-active");
+  r_e("signin_form").reset();
+});
+
+auth.onAuthStateChanged(function (user) {
+  if (user) {
+    console.log(user.email);
+    r_e("signinbtn").innerHTML = user.email;
+    user_add_div.classList.remove('is-hidden');
+    email_bar.classList.add('is-hidden');
+    password_bar.classList.add('is-hidden');
+    r_e("login_submit").innerHTML = "Log Out";
+    //eventbtn.classList.add("is-active");
+  } else {
+    r_e("signinbtn").innerHTML = `Admin Portal`;
+    user_add_div.classList.add('is-hidden');
+    email_bar.classList.remove('is-hidden');
+    password_bar.classList.remove('is-hidden');
+    r_e("login_submit").innerHTML = "Login";
+    //eventbtn.classList.add("is-hidden");
+  }
+});
+cancel_btn.classList.add('is-hidden');
+var btn_counter = 0;
+user_add.addEventListener("click", () => {
+  if (btn_counter == 0) {
+    submit_btn.classList.add('is-hidden');
+    cancel_btn.classList.remove('is-hidden');
+    email_bar.classList.remove('is-hidden');
+    password_bar.classList.remove('is-hidden');
+    btn_counter = 1;
+  } else if (btn_counter == 1) {
+
+    let email = r_e("email_").value;
+    let password = r_e("password_").value;
+    auth.createUserWithEmailAndPassword(email, password).then((user) => {
+      //console.log(`${user.user.email}  is created`);
+      console.log(user);
+    });
+    btn_counter = 0;
+    signin_modal.classList.remove("is-active");
+    r_e("signin_form").reset();
+  }
+});
+
+cancel_btn.addEventListener("click", () => {
+  submit_btn.classList.remove('is-hidden');
+  cancel_btn.classList.add('is-hidden');
+  email_bar.classList.add('is-hidden');
+  password_bar.classList.add('is-hidden');
+  btn_counter = 0;
+
+});
+
+
+//--------------------------------------EVENT MODAL-------------------------------------
+
+
 
 eventbtn.addEventListener("click", () => {
   event_modal.classList.add("is-active");
@@ -128,15 +174,6 @@ event_modalbg.addEventListener("click", () => {
   event_modal.classList.remove("is-active");
   r_e("event_form").reset();
 });
-
-///user sign in
-
-//firebase.auth().createUserWithEmailAndPassword(email, password)
-//  .then((userCredential) => {
-// Signed in
-//    var user = userCredential.user;
-// ...
-//})
 
 event_submit.addEventListener("click", () => {
   let title = document.querySelector("#title").innerHTML;
