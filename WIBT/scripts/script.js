@@ -71,6 +71,7 @@ function r_e(id) {
 let signinbtn = document.querySelector("#signinbtn");
 let signin_modal = document.querySelector("#signin_modal");
 let signin_modalbg = document.querySelector("#signin_modalbg");
+let eventbtn = document.querySelector("#eventbtn");
 
 login_submit.addEventListener("click", (e) => {
   e.preventDefault();
@@ -278,9 +279,11 @@ event_submit.addEventListener("click", () => {
         element.forEach((e) => {
           let title = e.data().TITLE;
           let time = e.data().TIME;
-          eventCard += `<div class="mini-card">`;
+          let docid = (e.data().eventCard += `<div class="mini-card">`);
           eventCard += `<p class="mini-card-title">${title}</p>`;
           eventCard += `<div class="event-date">${time}</div>`;
+          eventCard +=
+            '<p><button class="button is-small is-rounded"><i class="fas fa-ban"></i></button><button class="button is-small is-rounded"><i class="fas fa-pencil"></i></button></p>';
           eventCard += `</div>`;
           document.querySelector(ID).innerHTML = eventCard;
         });
