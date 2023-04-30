@@ -72,6 +72,7 @@ let signinbtn = document.querySelector("#signinbtn");
 let signin_modal = document.querySelector("#signin_modal");
 let signin_modalbg = document.querySelector("#signin_modalbg");
 let eventbtn = document.querySelector("#eventbtn");
+let event_modal = document.querySelector("#event_modal");
 
 login_submit.addEventListener("click", (e) => {
   e.preventDefault();
@@ -162,214 +163,213 @@ event_submit.addEventListener("click", () => {
         console.log(e.data().Title);
       });
     });
-
-  // let homeEvents = document.querySelector("#homeEvents");
-  // let eventsEvents = document.querySelector("#eventsEvents");
-  // let previousSpeakers = document.querySelector("#previousSpeakers");
-
-  function eventsEvents1(ID) {
-    db.collection("INSERTNAME")
-      .get()
-      .then((response) => {
-        let eventCard = "";
-        let element = response.docs;
-        element.forEach((e) => {
-          let title = e.data().TITLE;
-          let time = e.data().TIME;
-          eventCard += `<div class="mini-card">`;
-          eventCard += `<p class="mini-card-title">${title}</p>`;
-          eventCard += `<div class="event-date">${time}</div>`;
-          eventCard += `</div>`;
-          document.querySelector(ID).innerHTML = eventCard;
-        });
-      });
-  }
-
-  function eventsEvents2() {
-    let eventCard = "";
-    eventCard += `<div class="mini-card">`;
-    eventCard += `<p class="mini-card-title">test</p>`;
-    eventCard += `<div class="event-date">test</div>`;
-    eventCard += `</div>`;
-    document.querySelector("#homeEventsTest").innerHTML = eventCard;
-  }
-  eventsEvents2();
-
-  function previousSpeakers1() {
-    db.collection("INSERTNAME")
-      .get()
-      .then((response) => {
-        let speakerCard = "";
-        let element = response.docs;
-        let semester = [];
-        element.forEach((e) => {
-          let image = e.data().IMAGE;
-          let name = e.data().NAME;
-          let position = e.data().POSITION;
-          let comp = e.data().COMPANY;
-          let sem = e.data().SEMESTER;
-          if (semester.includes(sem)) {
-            speakerCard += `<div class="row">`;
-            speakerCard += `<div class="speaker-card">`;
-            speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
-            speakerCard += `<div class="speaker-name">${name}</div>`;
-            speakerCard += `<div class="speaker-position">${position}</div>`;
-            speakerCard += `<div class="speaker-company">${comp}</div>`;
-            speakerCard += `</div>`;
-            speakerCard += `</div>`;
-            let currentSemStr = "#" + sem;
-            let currentSem = document.querySelector(currentSemStr);
-            document.querySelector(currentSem).innerHTML = speakerCard;
-          } else {
-            semester.push("semester");
-            speakerCard += `<div id="${sem}">`;
-            speakerCard += `<h2 class="section-title">${sem}</h2>`;
-            speakerCard += `<div class="row">`;
-            speakerCard += `<div class="speaker-card">`;
-            speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
-            speakerCard += `<div class="speaker-name">${name}</div>`;
-            speakerCard += `<div class="speaker-position">${position}</div>`;
-            speakerCard += `<div class="speaker-company">${comp}</div>`;
-            speakerCard += `</div>`;
-            speakerCard += `</div>`;
-            speakerCard += `</div>`;
-            document.querySelector("#previousSpeakers").innerHTML = speakerCard;
-          }
-        });
-      });
-  }
-
-  let semesters = [];
-  let elementExists = document.getElementsByTagName("h2");
-  for (let item of elementExists) {
-    semesters.push(item.innerHTML);
-  }
-  for (item in semesters) {
-    console.log(semesters[item]);
-  }
-  console.log(semesters.includes("Fall 2021"));
-  let a = "Spring";
-  let b = "Fall";
-
-  console.log(a > b);
-
-  const s = "2022";
-  const s1 = "2021";
-  const d = new Date(s);
-  const d1 = new Date(s1);
-  console.log(d);
-  console.log(d1);
-  console.log(d > d1);
-
-  let c = "Spring 2023";
-  c = c.split(" ");
-  console.log(c);
-  origin / dynamic;
-
-  // let homeEvents = document.querySelector("#homeEvents");
-  // let eventsEvents = document.querySelector("#eventsEvents");
-  // let previousSpeakers = document.querySelector("#previousSpeakers");
-
-  function eventsEvents1(ID) {
-    db.collection("INSERTNAME")
-      .get()
-      .then((response) => {
-        let eventCard = "";
-        let element = response.docs;
-        element.forEach((e) => {
-          let title = e.data().TITLE;
-          let time = e.data().TIME;
-          let docid = (e.data().eventCard += `<div class="mini-card">`);
-          eventCard += `<p class="mini-card-title">${title}</p>`;
-          eventCard += `<div class="event-date">${time}</div>`;
-          eventCard +=
-            '<p><button class="button is-small is-rounded"><i class="fas fa-ban"></i></button><button class="button is-small is-rounded"><i class="fas fa-pencil"></i></button></p>';
-          eventCard += `</div>`;
-          document.querySelector(ID).innerHTML = eventCard;
-        });
-      });
-  }
-
-  function eventsEvents2() {
-    let eventCard = "";
-    eventCard += `<div class="mini-card">`;
-    eventCard += `<p class="mini-card-title">test</p>`;
-    eventCard += `<div class="event-date">test</div>`;
-    eventCard += `</div>`;
-    document.querySelector("#homeEventsTest").innerHTML = eventCard;
-  }
-  eventsEvents2();
-
-  function previousSpeakers1() {
-    db.collection("INSERTNAME")
-      .get()
-      .then((response) => {
-        let speakerCard = "";
-        let element = response.docs;
-        let semester = [];
-        element.forEach((e) => {
-          let image = e.data().IMAGE;
-          let name = e.data().NAME;
-          let position = e.data().POSITION;
-          let comp = e.data().COMPANY;
-          let sem = e.data().SEMESTER;
-          if (semester.includes(sem)) {
-            speakerCard += `<div class="row">`;
-            speakerCard += `<div class="speaker-card">`;
-            speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
-            speakerCard += `<div class="speaker-name">${name}</div>`;
-            speakerCard += `<div class="speaker-position">${position}</div>`;
-            speakerCard += `<div class="speaker-company">${comp}</div>`;
-            speakerCard += `</div>`;
-            speakerCard += `</div>`;
-            let currentSemStr = "#" + sem;
-            let currentSem = document.querySelector(currentSemStr);
-            document.querySelector(currentSem).innerHTML = speakerCard;
-          } else {
-            semester.push("semester");
-            speakerCard += `<div id="${sem}">`;
-            speakerCard += `<h2 class="section-title">${sem}</h2>`;
-            speakerCard += `<div class="row">`;
-            speakerCard += `<div class="speaker-card">`;
-            speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
-            speakerCard += `<div class="speaker-name">${name}</div>`;
-            speakerCard += `<div class="speaker-position">${position}</div>`;
-            speakerCard += `<div class="speaker-company">${comp}</div>`;
-            speakerCard += `</div>`;
-            speakerCard += `</div>`;
-            speakerCard += `</div>`;
-            document.querySelector("#previousSpeakers").innerHTML = speakerCard;
-          }
-        });
-      });
-  }
-
-  // let semesters = [];
-  // let elementExists = document.getElementsByTagName("h2");
-  // for (let item of elementExists) {
-  //   semesters.push(item.innerHTML);
-  // }
-  // for (item in semesters) {
-  //   console.log(semesters[item]);
-  // }
-  // console.log(semesters.includes("Fall 2021"));
-  // let a = "Spring";
-  // let b = "Fall";
-
-  // console.log(a > b);
-
-  // const s = "2022";
-  // const s1 = "2021";
-  // const d = new Date(s);
-  // const d1 = new Date(s1);
-  // console.log(d);
-  // console.log(d1);
-  // console.log(d > d1);
-
-  // let c = "Spring 2023";
-  // c = c.split(" ");
-  // console.log(c); >>>
-  // >>>
-  // >
-  // origin / dynamic}
 });
+// let homeEvents = document.querySelector("#homeEvents");
+// let eventsEvents = document.querySelector("#eventsEvents");
+// let previousSpeakers = document.querySelector("#previousSpeakers");
+
+// function eventsEvents1(ID) {
+//   db.collection("INSERTNAME")
+//     .get()
+//     .then((response) => {
+//       let eventCard = "";
+//       let element = response.docs;
+//       element.forEach((e) => {
+//         let title = e.data().TITLE;
+//         let time = e.data().TIME;
+//         eventCard += `<div class="mini-card">`;
+//         eventCard += `<p class="mini-card-title">${title}</p>`;
+//         eventCard += `<div class="event-date">${time}</div>`;
+//         eventCard += `</div>`;
+//         document.querySelector(ID).innerHTML = eventCard;
+//       });
+//     });
+// }
+
+// function eventsEvents2() {
+//   let eventCard = "";
+//   eventCard += `<div class="mini-card">`;
+//   eventCard += `<p class="mini-card-title">test</p>`;
+//   eventCard += `<div class="event-date">test</div>`;
+//   eventCard += `</div>`;
+//   document.querySelector("#homeEventsTest").innerHTML = eventCard;
+// }
+// eventsEvents2();
+
+// function previousSpeakers1() {
+//   db.collection("INSERTNAME")
+//     .get()
+//     .then((response) => {
+//       let speakerCard = "";
+//       let element = response.docs;
+//       let semester = [];
+//       element.forEach((e) => {
+//         let image = e.data().IMAGE;
+//         let name = e.data().NAME;
+//         let position = e.data().POSITION;
+//         let comp = e.data().COMPANY;
+//         let sem = e.data().SEMESTER;
+//         if (semester.includes(sem)) {
+//           speakerCard += `<div class="row">`;
+//           speakerCard += `<div class="speaker-card">`;
+//           speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
+//           speakerCard += `<div class="speaker-name">${name}</div>`;
+//           speakerCard += `<div class="speaker-position">${position}</div>`;
+//           speakerCard += `<div class="speaker-company">${comp}</div>`;
+//           speakerCard += `</div>`;
+//           speakerCard += `</div>`;
+//           let currentSemStr = "#" + sem;
+//           let currentSem = document.querySelector(currentSemStr);
+//           document.querySelector(currentSem).innerHTML = speakerCard;
+//         } else {
+//           semester.push("semester");
+//           speakerCard += `<div id="${sem}">`;
+//           speakerCard += `<h2 class="section-title">${sem}</h2>`;
+//           speakerCard += `<div class="row">`;
+//           speakerCard += `<div class="speaker-card">`;
+//           speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
+//           speakerCard += `<div class="speaker-name">${name}</div>`;
+//           speakerCard += `<div class="speaker-position">${position}</div>`;
+//           speakerCard += `<div class="speaker-company">${comp}</div>`;
+//           speakerCard += `</div>`;
+//           speakerCard += `</div>`;
+//           speakerCard += `</div>`;
+//           document.querySelector("#previousSpeakers").innerHTML = speakerCard;
+//         }
+//       });
+//     });
+// }
+
+let semesters = [];
+let elementExists = document.getElementsByTagName("h2");
+for (let item of elementExists) {
+  semesters.push(item.innerHTML);
+}
+for (item in semesters) {
+  console.log(semesters[item]);
+}
+console.log(semesters.includes("Fall 2021"));
+let a = "Spring";
+let b = "Fall";
+
+console.log(a > b);
+
+const s = "2022";
+const s1 = "2021";
+const d = new Date(s);
+const d1 = new Date(s1);
+console.log(d);
+console.log(d1);
+console.log(d > d1);
+
+let c = "Spring 2023";
+c = c.split(" ");
+console.log(c);
+origin / dynamic;
+
+// let homeEvents = document.querySelector("#homeEvents");
+// let eventsEvents = document.querySelector("#eventsEvents");
+// let previousSpeakers = document.querySelector("#previousSpeakers");
+
+function eventsEvents1(ID) {
+  db.collection("INSERTNAME")
+    .get()
+    .then((response) => {
+      let eventCard = "";
+      let element = response.docs;
+      element.forEach((e) => {
+        let title = e.data().TITLE;
+        let time = e.data().TIME;
+        let docid = (e.data().eventCard += `<div class="mini-card">`);
+        eventCard += `<p class="mini-card-title">${title}</p>`;
+        eventCard += `<div class="event-date">${time}</div>`;
+        eventCard +=
+          '<p><button class="button is-small is-rounded"><i class="fas fa-ban"></i></button><button class="button is-small is-rounded"><i class="fas fa-pencil"></i></button></p>';
+        eventCard += `</div>`;
+        document.querySelector(ID).innerHTML = eventCard;
+      });
+    });
+}
+
+function eventsEvents2() {
+  let eventCard = "";
+  eventCard += `<div class="mini-card">`;
+  eventCard += `<p class="mini-card-title">test</p>`;
+  eventCard += `<div class="event-date">test</div>`;
+  eventCard += `</div>`;
+  document.querySelector("#homeEventsTest").innerHTML = eventCard;
+}
+eventsEvents2();
+
+function previousSpeakers1() {
+  db.collection("INSERTNAME")
+    .get()
+    .then((response) => {
+      let speakerCard = "";
+      let element = response.docs;
+      let semester = [];
+      element.forEach((e) => {
+        let image = e.data().IMAGE;
+        let name = e.data().NAME;
+        let position = e.data().POSITION;
+        let comp = e.data().COMPANY;
+        let sem = e.data().SEMESTER;
+        if (semester.includes(sem)) {
+          speakerCard += `<div class="row">`;
+          speakerCard += `<div class="speaker-card">`;
+          speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
+          speakerCard += `<div class="speaker-name">${name}</div>`;
+          speakerCard += `<div class="speaker-position">${position}</div>`;
+          speakerCard += `<div class="speaker-company">${comp}</div>`;
+          speakerCard += `</div>`;
+          speakerCard += `</div>`;
+          let currentSemStr = "#" + sem;
+          let currentSem = document.querySelector(currentSemStr);
+          document.querySelector(currentSem).innerHTML = speakerCard;
+        } else {
+          semester.push("semester");
+          speakerCard += `<div id="${sem}">`;
+          speakerCard += `<h2 class="section-title">${sem}</h2>`;
+          speakerCard += `<div class="row">`;
+          speakerCard += `<div class="speaker-card">`;
+          speakerCard += `<img class="speaker-image" src="${image}" alt="Headshot">`;
+          speakerCard += `<div class="speaker-name">${name}</div>`;
+          speakerCard += `<div class="speaker-position">${position}</div>`;
+          speakerCard += `<div class="speaker-company">${comp}</div>`;
+          speakerCard += `</div>`;
+          speakerCard += `</div>`;
+          speakerCard += `</div>`;
+          document.querySelector("#previousSpeakers").innerHTML = speakerCard;
+        }
+      });
+    });
+}
+
+// let semesters = [];
+// let elementExists = document.getElementsByTagName("h2");
+// for (let item of elementExists) {
+//   semesters.push(item.innerHTML);
+// }
+// for (item in semesters) {
+//   console.log(semesters[item]);
+// }
+// console.log(semesters.includes("Fall 2021"));
+// let a = "Spring";
+// let b = "Fall";
+
+// console.log(a > b);
+
+// const s = "2022";
+// const s1 = "2021";
+// const d = new Date(s);
+// const d1 = new Date(s1);
+// console.log(d);
+// console.log(d1);
+// console.log(d > d1);
+
+// let c = "Spring 2023";
+// c = c.split(" ");
+// console.log(c); >>>
+// >>>
+// >
+// origin / dynamic}
