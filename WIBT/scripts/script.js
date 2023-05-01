@@ -269,14 +269,6 @@ function edit_doc(id1) {
             console.log("Previous event has been deleted");
         });
 }
-function del_doc(id) {
-    db.collection("events")
-        .doc(id)
-        .delete()
-        .then(() => {
-            console.log("deleted event");
-        });
-}
 
 // event_submit.addEventListener("click", () => {
 //   let title = document.querySelector("#title").innerHTML;
@@ -343,31 +335,31 @@ function del_doc(id) {
 // });
 
 //create editing
-function edit_doc(id1) {
-    event_modal.classList.add("is-active");
-    db.collection("events")
-        .where(id, "==", id1)
-        .get()
-        .then((response) => {
-            reloadEvents();
-            // let e = response.docs;
-            // let title = e.data().Title;
-            // let time = e.data().Time;
-            // let date = e.data().Date;
-            // let newTime = time.split(" ");
-            // document.querySelector("#title").innerHTML = title;
-            // document.querySelector("#date").innerHTML = date;
-            // document.querySelector("#hour").innerHTML = newTime[0];
-            // document.querySelector("minute").innerHTML = newTime[1];
-            // document.querySelector("ampm").innerHTML = newTime[2];
-        });
-    db.collection("events")
-        .doc(id)
-        .delete()
-        .then(() => {
-            console.log("Previous event has been deleted");
-        });
-}
+// function edit_doc(id1) {
+//     event_modal.classList.add("is-active");
+//     db.collection("events")
+//         .where(id, "==", id1)
+//         .get()
+//         .then((response) => {
+//             reloadEvents();
+//             // let e = response.docs;
+//             // let title = e.data().Title;
+//             // let time = e.data().Time;
+//             // let date = e.data().Date;
+//             // let newTime = time.split(" ");
+//             // document.querySelector("#title").innerHTML = title;
+//             // document.querySelector("#date").innerHTML = date;
+//             // document.querySelector("#hour").innerHTML = newTime[0];
+//             // document.querySelector("minute").innerHTML = newTime[1];
+//             // document.querySelector("ampm").innerHTML = newTime[2];
+//         });
+//     db.collection("events")
+//         .doc(id)
+//         .delete()
+//         .then(() => {
+//             console.log("Previous event has been deleted");
+//         });
+// }
 
 function del_doc(id) {
     db.collection("events")
