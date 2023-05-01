@@ -13,7 +13,9 @@ firebase.initializeApp(firebaseConfig);
 let auth = firebase.auth();
 let db = firebase.firestore();
 
-
+// Initialize Page Variables
+let urlArray = window.location.href.split('/');
+let pageName = urlArray[urlArray.length - 1];
 
 $(document).ready(function () {
     // Check for click events on the navbar burger icon
@@ -149,10 +151,12 @@ cancel_btn.addEventListener("click", () => {
 //     event_modal.classList.add("is-active");
 // });
 
-// event_modalbg.addEventListener("click", () => {
-//     event_modal.classList.remove("is-active");
-//     r_e("event_form").reset();
-// });
+// if (pageName == "index.html" || pageName == "events.html") {
+//     document.getElementById("#event_modalbg").addEventListener("click", () => {
+//         event_modal.classList.remove("is-active");
+//         r_e("event_form").reset();
+//     });
+// }
 
 // event_submit.addEventListener("click", () => {
 //     let title = document.querySelector("#title").innerHTML;
@@ -186,16 +190,17 @@ function edit_doc(id1) {
         .where(id, "==", id1)
         .get()
         .then((response) => {
-            let e = response.docs;
-            let title = e.data().Title;
-            let time = e.data().Time;
-            let date = e.data().Date;
-            let newTime = time.split(" ");
-            document.querySelector("#title").innerHTML = title;
-            document.querySelector("#date").innerHTML = date;
-            document.querySelector("#hour").innerHTML = newTime[0];
-            document.querySelector("minute").innerHTML = newTime[1];
-            document.querySelector("ampm").innerHTML = newTime[2];
+            reloadEvents();
+            // let e = response.docs;
+            // let title = e.data().Title;
+            // let time = e.data().Time;
+            // let date = e.data().Date;
+            // let newTime = time.split(" ");
+            // document.querySelector("#title").innerHTML = title;
+            // document.querySelector("#date").innerHTML = date;
+            // document.querySelector("#hour").innerHTML = newTime[0];
+            // document.querySelector("minute").innerHTML = newTime[1];
+            // document.querySelector("ampm").innerHTML = newTime[2];
         });
     db.collection("events")
         .doc(id)
@@ -204,12 +209,13 @@ function edit_doc(id1) {
             console.log("Previous event has been deleted");
         });
 }
+
 function del_doc(id) {
     db.collection("events")
         .doc(id)
         .delete()
         .then(() => {
-            console.log("deleted event");
+            reloadEvents();
         });
 }
 
@@ -225,7 +231,7 @@ function loadEvents(ID) {
                 // create event
                 let eventElem = document.createElement("div");
                 $(eventElem).addClass("event");
-                // create titel
+                // create title
                 let title = e.data().Title;
                 let titleNode = document.createTextNode(title);
                 let titleElem = document.createElement("div");
@@ -233,7 +239,7 @@ function loadEvents(ID) {
                 titleElem.appendChild(titleNode);
                 eventElem.appendChild(titleElem);
                 // create date
-                let date = e.data().Date;
+                let date = e.data().Date + " " + e.data().Time;
                 let dateNode = document.createTextNode(date);
                 let dateElem = document.createElement("div");
                 $(dateElem).addClass("event-date");
@@ -274,17 +280,6 @@ function loadEvents(ID) {
             });
         });
 }
-
-// Get Current Page
-let urlArray = window.location.href.split('/');
-let pageName = urlArray[urlArray.length - 1];
-
-// // Only Load Events on Desired Page
-// if (pageName == "index.html") {
-//     loadEvents("homeEvents");
-// } else if (pageName == "events.html") {
-//     loadEvents("eventsEvents");
-// }
 
 function reloadEvents() {
     // Get Current Page
