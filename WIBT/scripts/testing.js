@@ -32,6 +32,6 @@ async function go() {
   await new Promise((r) => setTimeout(r, 2000));
 }
 
-// call the go()
+// call go()
 
 go();
