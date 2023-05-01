@@ -177,6 +177,40 @@ cancel_btn.addEventListener("click", () => {
 //         });
 // });
 
+//create editing
+function edit_doc(id1) {
+    event_modal.classList.add("is-active");
+    db.collection("events")
+        .where(id, "==", id1)
+        .get()
+        .then((response) => {
+            let e = response.docs;
+            let title = e.data().Title;
+            let time = e.data().Time;
+            let date = e.data().Date;
+            let newTime = time.split(" ");
+            document.querySelector("#title").innerHTML = title;
+            document.querySelector("#date").innerHTML = date;
+            document.querySelector("#hour").innerHTML = newTime[0];
+            document.querySelector("minute").innerHTML = newTime[1];
+            document.querySelector("ampm").innerHTML = newTime[2];
+        });
+    db.collection("events")
+        .doc(id)
+        .delete()
+        .then(() => {
+            console.log("Previous event has been deleted");
+        });
+}
+function del_doc(id) {
+    db.collection("events")
+        .doc(id)
+        .delete()
+        .then(() => {
+            console.log("deleted event");
+        });
+}
+
 //-------------------------EVENTS LOADING FUNCTIONALITY------------------------
 
 function loadEvents(ID) {
@@ -186,20 +220,52 @@ function loadEvents(ID) {
             let eventCard = "";
             let element = response.docs;
             element.forEach((e) => {
-                let title = e.data().Title;
-                let titleNode = document.createTextNode(title);
-                let date = e.data().Date;
-                let dateNode = document.createTextNode(date);
+                // create event
                 let eventElem = document.createElement("div");
                 $(eventElem).addClass("event");
+                // create titel
+                let title = e.data().Title;
+                let titleNode = document.createTextNode(title);
                 let titleElem = document.createElement("div");
                 $(titleElem).addClass("event-title");
                 titleElem.appendChild(titleNode);
                 eventElem.appendChild(titleElem);
+                // create date
+                let date = e.data().Date;
+                let dateNode = document.createTextNode(date);
                 let dateElem = document.createElement("div");
                 $(dateElem).addClass("event-date");
                 dateElem.appendChild(dateNode);
                 eventElem.appendChild(dateElem);
+                // create buttons wrapper
+                let buttonWrapperElem = document.createElement("div");
+                // create delete button
+                let deleteButtonElem = document.createElement("button");
+                $(deleteButtonElem).addClass("button is-small is-rounded delete-button m-0");
+                $(deleteButtonElem).attr("id", e.id);
+                let deleteIconElem = document.createElement("i");
+                $(deleteIconElem).addClass("fas fa-ban");
+                deleteButtonElem.appendChild(deleteIconElem);
+                $(deleteButtonElem).click(function () {
+                    let id = $(this).attr("id");
+                    console.log(id);
+                    del_doc(id);
+                });
+                buttonWrapperElem.appendChild(deleteButtonElem);
+                // create edit button
+                let editButtonElem = document.createElement("button");
+                $(editButtonElem).addClass("button is-small is-rounded delete-button m-0");
+                $(editButtonElem).attr("id", e.id);
+                let editIconElem = document.createElement("i");
+                $(editIconElem).addClass("fas fa-pencil");
+                editButtonElem.appendChild(editIconElem);
+                $(editButtonElem).click(function () {
+                    let id = $(this).attr("id");
+                    edit_doc(id);
+                });
+                buttonWrapperElem.appendChild(editButtonElem);
+                eventElem.appendChild(buttonWrapperElem);
+                // eventCard += `<p><button class="button is-small is-rounded delete-button m-0" onclick = "del_doc('${e.id}')"><i class="fas fa-ban"></i></button><button class="button is-small is-rounded m-0" onclick = "edit_doc('${e.id}1')"><i class="fas fa-pencil"></i></button></p>`;
                 document.getElementById(ID).appendChild(eventElem);
             });
         });
