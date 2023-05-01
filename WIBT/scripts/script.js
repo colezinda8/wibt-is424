@@ -182,23 +182,113 @@ cancel_btn.addEventListener("click", () => {
 
 //------------------------EVENT EDITING & CREATING MODAL-----------------------
 
-//add new events
-event_submit.addEventListener("click", () => {
-    add_doc();
-});
 
 if (pageName == "index.html" || pageName == "events.html") {
+    //add new events
+    event_submit.addEventListener("click", () => {
+        add_doc();
+    });
+
     document.getElementById("event_modalbg").addEventListener("click", () => {
         event_modal.classList.remove("is-active");
         r_e("event_form").reset();
     });
+
+    document.getElementById("event_edit_modalbg").addEventListener("click", () => {
+        $('#event_edit_modal').removeClass("is-active");
+        r_e("event_form").reset();
+    });
+
+    $('#close_delete').click(function () {
+        $('#deleteModal').removeClass("is-active");
+    });
+
+    $('#event_edit_close').click(function () {
+        $('#event_edit_modal').removeClass("is-active");
+    });
+
+    $('#event_delete').click(function () {
+        submit_delete();
+    });
+
+    $('#event_edit_submit').click(function () {
+        submit_edit();
+    });
+
+    $('#close_add').click(function () {
+        event_modal.classList.remove("is-active");
+    });
 }
 
-$('#close_delete').click(function () {
-    $('#deleteModal').removeClass("is-active");
-});
 
-$('#event_delete').click(function () {
+function add_doc() {
+    let title = document.querySelector("#title").value;
+    let date = document.querySelector("#date").value;
+    let hour = document.querySelector("#hour").value;
+    let minute = document.querySelector("#minute").value;
+    let ampm = document.querySelector("#ampm").value;
+    let time = hour + ":" + minute + " " + ampm;
+
+    let new_event = {
+        Title: title,
+        Date: date,
+        Time: time,
+    };
+    db.collection("events").add(new_event).then(() => {
+        reloadEvents();
+        event_modal.classList.remove("is-active");
+    });
+}
+
+//create editing
+function edit_doc(id1) {
+    $('#event_edit_modal').addClass("is-active");
+    $('#eventToEdit').attr("event_id", id1);
+    db.collection("events")
+        .where(firebase.firestore.FieldPath.documentId(), "==", id1)
+        .get()
+        .then((response) => {
+            let element = response.docs;
+            element.forEach((e) => {
+                let title = e.data().Title;
+                let time = e.data().Time;
+                let date = e.data().Date;
+                let firstSplit = time.split(" ");
+                let secondSplit = firstSplit[0].split(":");
+                document.getElementById("edit_title").value = title;
+                document.getElementById("edit_date").value = date;
+                document.getElementById("edit_hour").value = secondSplit[0];
+                document.getElementById("edit_minute").value = secondSplit[1];
+                document.getElementById("edit_ampm").value = firstSplit[1];
+            });
+        });
+}
+
+function submit_edit() {
+    let title = document.getElementById("edit_title").value;
+    let date = document.getElementById("edit_date").value;
+    let hour = document.getElementById("edit_hour").value;
+    let minute = document.getElementById("edit_minute").value;
+    let ampm = document.getElementById("edit_ampm").value
+    let time = hour + ":" + minute + " " + ampm;
+    let id = $('#eventToEdit').attr("event_id");
+
+    db.collection("events").doc(id).update({
+        Title: title,
+        Date: date,
+        Time: time
+    }).then(() => {
+        reloadEvents();
+        $('#event_edit_modal').removeClass("is-active");
+    });
+}
+
+function del_doc(id) {
+    $('#deleteModal').addClass("is-active");
+    $('#eventToDelete').attr("event_id", id);
+}
+
+function submit_delete() {
     let id = $('#eventToDelete').attr("event_id");
     db.collection("events")
         .doc(id)
@@ -206,57 +296,8 @@ $('#event_delete').click(function () {
         .then(() => {
             reloadEvents();
             $('#deleteModal').removeClass("is-active");
+            $('#eventToDelete').attr("event_id", "");
         });
-});
-
-function add_doc() {
-    let title = document.querySelector("#title").innerHTML;
-    let date = document.querySelector("#date").innerHTML;
-    let hour = document.querySelector("#hour").innerHTML;
-    let minute = document.querySelector("#minute").innerHTML;
-    let ampm = document.querySelector("#ampm").innerHTML;
-    let time = hour + " " + minute + " " + ampm;
-
-    let new_event = {
-        Title: title,
-        Date: date,
-        Time: time,
-    };
-    db.collection("events").add(new_event);
-
-    db.collection("events")
-        .get()
-        .then((response) => {
-            let element = response.docs;
-            element.forEach((e) => {
-                console.log(e.data().Title);
-            });
-        });
-}
-
-//create editing
-function edit_doc(id1) {
-    event_modal.classList.add("is-active");
-    db.collection("events")
-        .where(id, "==", id1)
-        .get()
-        .then((response) => {
-            let e = response.docs;
-            let title = e.data().Title;
-            let time = e.data().Time;
-            let date = e.data().Date;
-            let newTime = time.split(" ");
-            document.querySelector("#title").innerHTML = title;
-            document.querySelector("#date").innerHTML = date;
-            document.querySelector("#hour").innerHTML = newTime[0];
-            document.querySelector("minute").innerHTML = newTime[1];
-            document.querySelector("ampm").innerHTML = newTime[2];
-        });
-}
-
-function del_doc(id) {
-    $('#deleteModal').addClass("is-active");
-    $('#eventToDelete').attr("event_id", id);
 }
 
 //-------------------------EVENTS LOADING FUNCTIONALITY------------------------
