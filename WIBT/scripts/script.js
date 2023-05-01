@@ -1,9 +1,3 @@
-// Import the functions you need from the SDKs you need
-import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
-//import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js";
-//import { getAuth } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
 const firebaseConfig = {
     apiKey: "AIzaSyABqmr8_UbI6eoET593lRbqvmB_XxUIIMY",
     authDomain: "wibt-website.firebaseapp.com",
@@ -13,19 +7,13 @@ const firebaseConfig = {
     appId: "1:620909080156:web:4f81b6f258a535e833c099",
     measurementId: "G-YRG9SDJ7DN",
 };
+
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
 firebase.initializeApp(firebaseConfig);
 let auth = firebase.auth();
 let db = firebase.firestore();
-//let db = firebase.firestore();
-console.log(auth.currentUser);
 
-function updateNavLinks() {
-    let urlParts = window.location.href.split("/");
-    let pageName = urlParts[urlParts.length - 1].replace(".html", "");
-    $("#" + pageName).addClass("active");
-}
+
 
 $(document).ready(function () {
     // Check for click events on the navbar burger icon
@@ -37,6 +25,14 @@ $(document).ready(function () {
     updateNavLinks();
 });
 
+//--------------------------------NAVBAR FUNCTIONALITY-------------------------
+
+function updateNavLinks() {
+    let urlParts = window.location.href.split("/");
+    let pageName = urlParts[urlParts.length - 1].replace(".html", "");
+    $("#" + pageName).addClass("active");
+}
+
 function myFunc(id) {
     var x = document.getElementById(id);
     if (x.className.indexOf("w3-show") == -1) {
@@ -46,7 +42,7 @@ function myFunc(id) {
     }
 }
 
-//--------------------------------SIGN UP--------------------------------------------------------
+//--------------------------------SIGN UP FUNCTIONALITY------------------------
 function r_e(id) {
     return document.querySelector(`#${id}`);
 }
@@ -101,14 +97,14 @@ auth.onAuthStateChanged(function (user) {
         email_bar.classList.add('is-hidden');
         password_bar.classList.add('is-hidden');
         r_e("login_submit").innerHTML = "Log Out";
-        // eventbtn.classList.add("is-active");
+        // eventbtn.classList.add("is-active"); !!!!!!!UNDO BEFORE COMMITTING!!!!!!!!!!
     } else {
         r_e("signinbtn").innerHTML = `Admin Portal`;
         user_add_div.classList.add('is-hidden');
         email_bar.classList.remove('is-hidden');
         password_bar.classList.remove('is-hidden');
         r_e("login_submit").innerHTML = "Login";
-        // eventbtn.classList.add("is-hidden");
+        // eventbtn.classList.add("is-hidden"); !!!!!!!UNDO BEFORE COMMITTING!!!!!!!!!!
     }
 });
 
@@ -145,7 +141,7 @@ cancel_btn.addEventListener("click", () => {
 });
 
 
-//--------------------------------------EVENT MODAL-------------------------------------
+//------------------------EVENT EDITING & CREATING MODAL-----------------------
 
 // eventbtn.addEventListener("click", () => {
 //     event_modal.classList.add("is-active");
@@ -181,9 +177,9 @@ cancel_btn.addEventListener("click", () => {
 //         });
 // });
 
-//--------------------------------------EVENTS LOADING-------------------------------------
+//-------------------------EVENTS LOADING FUNCTIONALITY------------------------
 
-function Events(ID) {
+function loadEvents(ID) {
     db.collection("events")
         .get()
         .then((response) => {
@@ -204,11 +200,18 @@ function Events(ID) {
                 $(dateElem).addClass("event-date");
                 dateElem.appendChild(dateNode);
                 eventElem.appendChild(dateElem);
-                console.log(ID);
                 document.getElementById(ID).appendChild(eventElem);
             });
         });
 }
 
-Events("homeEvents");
-//Events("#eventsEvents");
+// Get Current Page
+let urlArray = window.location.href.split('/');
+let pageName = urlArray[urlArray.length - 1];
+
+// Only Load Events on Desired Page
+if (pageName == "index.html") {
+    loadEvents("homeEvents");
+} else if (pageName == "events.html") {
+    loadEvents("eventsEvents");
+}

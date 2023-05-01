@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="styling/style.css" />
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
   <style>
     .accordion-title {
       font-size: 30px;
@@ -261,12 +264,12 @@
           <label class="label">Minute</label>
           <input type="text" id="minute">
           <p><br>
-            <div class="select">
-              <select id="ampm">
-                <option>PM</option>
-                <option>AM</option>
-              </select>
-            </div>
+          <div class="select">
+            <select id="ampm">
+              <option>PM</option>
+              <option>AM</option>
+            </select>
+          </div>
           </p>
 
         </div>
@@ -328,71 +331,7 @@
         </div>
       </div>
       <div class="accordion-content">
-        <div class="level" style="overflow-x: scroll;">
-          <div class="event">
-            <div class="event-title">Speaker from Apple</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Speaker from Apple</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Speaker from Apple</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Connect with Foxconn</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Visit from Target</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Visit from Target</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Visit from Target</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Visit from Target</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
+        <div id="eventsEvents" class="level" style="overflow-x: scroll;align-content: start;justify-content: left;">
         </div>
       </div>
     </div>
