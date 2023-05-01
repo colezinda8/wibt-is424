@@ -97,6 +97,7 @@ auth.onAuthStateChanged(function (user) {
         email_bar.classList.add('is-hidden');
         password_bar.classList.add('is-hidden');
         r_e("login_submit").innerHTML = "Log Out";
+        reloadEvents();
         // eventbtn.classList.add("is-active"); !!!!!!!UNDO BEFORE COMMITTING!!!!!!!!!!
     } else {
         r_e("signinbtn").innerHTML = `Admin Portal`;
@@ -104,6 +105,7 @@ auth.onAuthStateChanged(function (user) {
         email_bar.classList.remove('is-hidden');
         password_bar.classList.remove('is-hidden');
         r_e("login_submit").innerHTML = "Login";
+        reloadEvents();
         // eventbtn.classList.add("is-hidden"); !!!!!!!UNDO BEFORE COMMITTING!!!!!!!!!!
     }
 });
@@ -237,35 +239,37 @@ function loadEvents(ID) {
                 $(dateElem).addClass("event-date");
                 dateElem.appendChild(dateNode);
                 eventElem.appendChild(dateElem);
-                // create buttons wrapper
-                let buttonWrapperElem = document.createElement("div");
-                // create delete button
-                let deleteButtonElem = document.createElement("button");
-                $(deleteButtonElem).addClass("button is-small is-rounded delete-button m-0");
-                $(deleteButtonElem).attr("id", e.id);
-                let deleteIconElem = document.createElement("i");
-                $(deleteIconElem).addClass("fas fa-ban");
-                deleteButtonElem.appendChild(deleteIconElem);
-                $(deleteButtonElem).click(function () {
-                    let id = $(this).attr("id");
-                    console.log(id);
-                    del_doc(id);
-                });
-                buttonWrapperElem.appendChild(deleteButtonElem);
-                // create edit button
-                let editButtonElem = document.createElement("button");
-                $(editButtonElem).addClass("button is-small is-rounded delete-button m-0");
-                $(editButtonElem).attr("id", e.id);
-                let editIconElem = document.createElement("i");
-                $(editIconElem).addClass("fas fa-pencil");
-                editButtonElem.appendChild(editIconElem);
-                $(editButtonElem).click(function () {
-                    let id = $(this).attr("id");
-                    edit_doc(id);
-                });
-                buttonWrapperElem.appendChild(editButtonElem);
-                eventElem.appendChild(buttonWrapperElem);
-                // eventCard += `<p><button class="button is-small is-rounded delete-button m-0" onclick = "del_doc('${e.id}')"><i class="fas fa-ban"></i></button><button class="button is-small is-rounded m-0" onclick = "edit_doc('${e.id}1')"><i class="fas fa-pencil"></i></button></p>`;
+                // only show edit & delete buttons if user is logged in
+                if (auth.currentUser) {
+                    // create buttons wrapper
+                    let buttonWrapperElem = document.createElement("div");
+                    // create delete button
+                    let deleteButtonElem = document.createElement("button");
+                    $(deleteButtonElem).addClass("button is-small is-rounded delete-button m-0");
+                    $(deleteButtonElem).attr("id", e.id);
+                    let deleteIconElem = document.createElement("i");
+                    $(deleteIconElem).addClass("fas fa-ban");
+                    deleteButtonElem.appendChild(deleteIconElem);
+                    $(deleteButtonElem).click(function () {
+                        let id = $(this).attr("id");
+                        console.log(id);
+                        del_doc(id);
+                    });
+                    buttonWrapperElem.appendChild(deleteButtonElem);
+                    // create edit button
+                    let editButtonElem = document.createElement("button");
+                    $(editButtonElem).addClass("button is-small is-rounded delete-button m-0");
+                    $(editButtonElem).attr("id", e.id);
+                    let editIconElem = document.createElement("i");
+                    $(editIconElem).addClass("fas fa-pencil");
+                    editButtonElem.appendChild(editIconElem);
+                    $(editButtonElem).click(function () {
+                        let id = $(this).attr("id");
+                        edit_doc(id);
+                    });
+                    buttonWrapperElem.appendChild(editButtonElem);
+                    eventElem.appendChild(buttonWrapperElem);
+                }
                 document.getElementById(ID).appendChild(eventElem);
             });
         });
@@ -275,9 +279,24 @@ function loadEvents(ID) {
 let urlArray = window.location.href.split('/');
 let pageName = urlArray[urlArray.length - 1];
 
-// Only Load Events on Desired Page
-if (pageName == "index.html") {
-    loadEvents("homeEvents");
-} else if (pageName == "events.html") {
-    loadEvents("eventsEvents");
+// // Only Load Events on Desired Page
+// if (pageName == "index.html") {
+//     loadEvents("homeEvents");
+// } else if (pageName == "events.html") {
+//     loadEvents("eventsEvents");
+// }
+
+function reloadEvents() {
+    // Get Current Page
+    let urlArray = window.location.href.split('/');
+    let pageName = urlArray[urlArray.length - 1];
+
+    // Only Load Events on Desired Page
+    if (pageName == "index.html") {
+        $("#homeEvents").empty();
+        loadEvents("homeEvents");
+    } else if (pageName == "events.html") {
+        $("#eventsEvents").empty();
+        loadEvents("eventsEvents");
+    }
 }
