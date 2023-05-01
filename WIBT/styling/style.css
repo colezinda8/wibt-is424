@@ -160,7 +160,7 @@ nav {
 .mini-card-title {
   color: #3b3b3b;
   font-weight: bold;
-  font-size: large;
+  font-size: 18px;
   padding-bottom: 0.5em;
   height: 4em;
 }
@@ -229,8 +229,10 @@ nav {
 .event-title {
   color: #3b3b3b;
   font-weight: bold;
-  font-size: normal;
+  font-size: 20px;
+  height: 5.5em;
   padding-bottom: 0.5em;
+  overflow: visible;
 }
 
 .event-content {
@@ -240,9 +242,14 @@ nav {
 
 .event-date {
   color: #424242;
-  font-size: smaller;
-  text-align: right;
-  font-style: italic;
+  font-size: 16px;
+}
+
+.event-list-wrapper {
+  overflow-x: scroll;
+  align-content: start;
+  justify-content: left;
+  height: 12em;
 }
 
 /* Grid Styles */

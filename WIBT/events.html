@@ -11,6 +11,10 @@
   <link rel="stylesheet" href="styling/style.css" />
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/121e5d3c23.js" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
   <style>
     .accordion-title {
       font-size: 30px;
@@ -191,31 +195,44 @@
       <h1 class="is-size-3 title">Admin Portal</h1>
       <form id="signin_form">
         <!-- Email -->
-        <div class="field">
-          <label class="label">Username</label>
+        <div class="field" id="email_bar">
+          <label class="label">Email</label>
           <div class="control">
             <input type="email" id="email_">
           </div>
-
-
         </div>
         <!-- Password -->
-        <div class="field">
+        <div class="field" id="password_bar">
           <label class="label">Password</label>
           <div class="control">
             <input type="password" id="password_">
           </div>
         </div>
-
         <!-- submit -->
-        <div class="field">
+        <div class="field" id="submit_btn">
+          <br>
           <div class="control">
             <a class="m-3 is-link" id="login_submit">Login</a>
           </div>
         </div>
+        <br>
+        <div class="field" id="user_add_div">
+          <div class="control">
+            <a class="m-3 is-link" id="user_add">Add User</a>
+          </div>
+        </div>
+
+        <div class="field" id="cancel_btn">
+          <br>
+          <div class="control">
+            <a class="m-3 is-link">Cancel</a>
+          </div>
+        </div>
+
         <div class="error has-text-danger">
         </div>
       </form>
+
     </div>
   </div>
 
@@ -248,12 +265,12 @@
           <label class="label">Minute</label>
           <input type="text" id="minute">
           <p><br>
-            <div class="select">
-              <select id="ampm">
-                <option>PM</option>
-                <option>AM</option>
-              </select>
-            </div>
+          <div class="select">
+            <select id="ampm">
+              <option>PM</option>
+              <option>AM</option>
+            </select>
+          </div>
           </p>
 
         </div>
@@ -315,71 +332,7 @@
         </div>
       </div>
       <div class="accordion-content">
-        <div class="level" style="overflow-x: scroll;">
-          <div class="event">
-            <div class="event-title">Speaker from Apple</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Speaker from Apple</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Speaker from Apple</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Connect with Foxconn</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Visit from Target</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Visit from Target</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Visit from Target</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
-          <div class="event">
-            <div class="event-title">Visit from Target</div>
-            <div class="event-content">
-              Praesent suscipit dictum sagittis. Nulla dolor augue,
-              pellentesque sed risus sed, rhoncus feugiat ipsum.
-            </div>
-            <div class="event-date">10/12/2023 8:00pm</div>
-          </div>
+        <div id="eventsEvents" class="level event-list-wrapper">
         </div>
       </div>
     </div>
