@@ -7,8 +7,22 @@
   padding: 1.5rem !important;
 }
 
+.has-text-danger {
+  margin-bottom: 1em;
+}
+
 .control input {
   width: 100%;
+  border-color: #d9d9d9;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+input[type="text"] {
+  width: 100%;
+  border-color: #d9d9d9;
+  padding: 0.5em;
+  border-radius: 0.5em;
 }
 
 .m-3 {
@@ -244,10 +258,10 @@ nav {
 }
 
 .event-add {
-    border-color: #ececec;
-    background-color: #fff !important;
-    border-width: 5px;
-    border-style: dashed;
+  border-color: #ececec;
+  background-color: #fff !important;
+  border-width: 5px;
+  border-style: dashed;
 }
 
 .event-add-text {

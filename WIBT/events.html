@@ -187,8 +187,7 @@
 </head>
 
 <body>
-
-  <!---------------------------------------sign in modal -------->
+  <!-- SIGN IN MODAL -->
   <div class="modal" id="signin_modal">
     <div class="modal-background" id="signin_modalbg"></div>
     <div class="modal-content p-6 has-background-white">
@@ -221,21 +220,17 @@
             <a class="m-3 is-link" id="user_add">Add User</a>
           </div>
         </div>
-
         <div class="field" id="cancel_btn">
           <br>
           <div class="control">
             <a class="m-3 is-link">Cancel</a>
           </div>
         </div>
-
         <div class="error has-text-danger">
         </div>
       </form>
-
     </div>
   </div>
-
   <!--EVENT ADD MODAL-->
   <div class="modal" id="event_modal">
     <div class="modal-background" id="event_modalbg"></div>
@@ -271,6 +266,8 @@
           </div>
           </p>
         </div>
+        <div class="error has-text-danger" id="addError">
+        </div>
         <div class="level" style="margin-top:1em;">
           <!-- add -->
           <div class="level-item">
@@ -284,8 +281,6 @@
               <a class="m-3 is-link" id="close_add">Cancel</a>
             </div>
           </div>
-        </div>
-        <div class="error has-text-danger">
         </div>
       </form>
     </div>
@@ -326,25 +321,25 @@
             </select>
           </div>
           </p>
-
+        </div>
+        <div class="error has-text-danger" id="editError">
         </div>
         <!-- submit -->
         <div class="field">
-          <div class="control">
+          <div class="control" style="text-align: center;">
             <a class="m-3 is-link" id="event_edit_submit">Submit Changes</a>
           </div>
         </div>
         <div class="field" style="margin-top:1em;">
-          <div class="control">
+          <div class="control" style="text-align: center;">
             <a class="m-3 is-link" id="event_edit_close">Cancel</a>
           </div>
         </div>
-        <div class="error has-text-danger">
-        </div>
+
       </form>
     </div>
   </div>
-  <!-- Event Delete Modal -->
+  <!-- EVENT DELETE MODAL -->
   <div class="modal" id="deleteModal">
     <div class="modal-background" id="delete_modalbg"></div>
     <div class="modal-content p-6 has-background-white">
@@ -353,6 +348,8 @@
       <div id="eventToDelete">
       </div>
       <form id="event_delete_form">
+        <div class="error has-text-danger" id="deleteError">
+        </div>
         <div class="level">
           <!-- delete -->
           <div class="level-item">
@@ -370,7 +367,7 @@
       </form>
     </div>
   </div>
-
+  <!-- NAVBAR -->
   <nav class="navbar is-transparent">
     <div class="container navbar-wrapper">
       <div class="navbar-brand">
