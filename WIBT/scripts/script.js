@@ -25,8 +25,6 @@ $(document).ready(function () {
         $(".navbar-burger").toggleClass("is-active");
         $(".navbar-menu").toggleClass("is-active");
     });
-    // ensure navbar is appropiately updated
-    updateNavLinks();
 });
 
 //--------------------------------HELPER FUNCTIONS-----------------------------
@@ -37,11 +35,6 @@ function return_element(id) {
 
 //--------------------------------NAVBAR FUNCTIONALITY-------------------------
 
-function updateNavLinks() {
-    let urlParts = window.location.href.split("/");
-    let pageName = urlParts[urlParts.length - 1].replace(".html", "");
-    $("#" + pageName).addClass("active");
-}
 
 //--------------------------------SIGN UP FUNCTIONALITY------------------------
 
@@ -173,7 +166,7 @@ cancel_btn.addEventListener("click", () => {
 //------------------------EVENT EDITING & CREATING MODAL-----------------------
 
 
-if (pageName == "index.html" || pageName == "events.html") {
+if (pageName == "index.html" || pageName == "events.html" || pageName == "") {
     //add new events
     event_submit.addEventListener("click", () => {
         add_doc();
@@ -424,7 +417,7 @@ function reloadEvents() {
     let pageName = urlArray[urlArray.length - 1];
 
     // Only Load Events on Desired Page
-    if (pageName == "index.html") {
+    if (pageName == "index.html" || pageName == "") {
         $("#homeEvents").empty();
         loadEvents("homeEvents");
     } else if (pageName == "events.html") {
