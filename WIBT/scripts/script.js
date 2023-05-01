@@ -52,7 +52,6 @@ let event_modal = document.querySelector("#event_modal");
 
 login_submit.addEventListener("click", (e) => {
     e.preventDefault();
-    //alert('test');
 
     let email = return_element("email_").value;
     let password = return_element("password_").value;
