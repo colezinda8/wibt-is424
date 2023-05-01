@@ -179,47 +179,37 @@ cancel_btn.addEventListener("click", () => {
 
 });
 
-// //create editing
-// function edit_doc(id1) {
-//   event_modal.classList.add("is-active");
-//   db.collection("events")
-//     .where(id, "==", id1)
-//     .get()
-//     .then((response) => {
-//       let e = response.docs;
-//       let title = e.data().Title;
-//       let time = e.data().Time;
-//       let date = e.data().Date;
-//       let newTime = time.split(" ");
-//       document.querySelector("#title").innerHTML = title;
-//       document.querySelector("#date").innerHTML = date;
-//       document.querySelector("#hour").innerHTML = newTime[0];
-//       document.querySelector("minute").innerHTML = newTime[1];
-//       document.querySelector("ampm").innerHTML = newTime[2];
-//     });
-// }
-// // edit_doc("mEokhz4zCIpNBY9MXrq7");
-// //onclick deletion function
-// function del_doc(id) {
-//   db.collection("events")
-//     .doc(id)
-//     .delete()
-//     .then(() => {
-//       console.log("deleted event");
-//     });
-// }
 
-eventbtn.addEventListener("click", () => {
-    event_modal.classList.add("is-active");
-});
-
-event_modalbg.addEventListener("click", () => {
-    event_modal.classList.remove("is-active");
-    r_e("event_form").reset();
-});
+//------------------------EVENT EDITING & CREATING MODAL-----------------------
 
 //add new events
 event_submit.addEventListener("click", () => {
+    add_doc();
+});
+
+if (pageName == "index.html" || pageName == "events.html") {
+    document.getElementById("event_modalbg").addEventListener("click", () => {
+        event_modal.classList.remove("is-active");
+        r_e("event_form").reset();
+    });
+}
+
+$('#close_delete').click(function () {
+    $('#deleteModal').removeClass("is-active");
+});
+
+$('#event_delete').click(function () {
+    let id = $('#eventToDelete').attr("event_id");
+    db.collection("events")
+        .doc(id)
+        .delete()
+        .then(() => {
+            reloadEvents();
+            $('#deleteModal').removeClass("is-active");
+        });
+});
+
+function add_doc() {
     let title = document.querySelector("#title").innerHTML;
     let date = document.querySelector("#date").innerHTML;
     let hour = document.querySelector("#hour").innerHTML;
@@ -242,7 +232,7 @@ event_submit.addEventListener("click", () => {
                 console.log(e.data().Title);
             });
         });
-});
+}
 
 //create editing
 function edit_doc(id1) {
@@ -262,112 +252,11 @@ function edit_doc(id1) {
             document.querySelector("minute").innerHTML = newTime[1];
             document.querySelector("ampm").innerHTML = newTime[2];
         });
-    db.collection("events")
-        .doc(id)
-        .delete()
-        .then(() => {
-            console.log("Previous event has been deleted");
-        });
 }
 
-// event_submit.addEventListener("click", () => {
-//   let title = document.querySelector("#title").innerHTML;
-//   let date = document.querySelector("#date").innerHTML;
-//   let hour = document.querySelector("#hour").innerHTML;
-//   let minute = document.querySelector("minute").innerHTML;
-//   let ampm = document.querySelector("ampm").innerHTML;
-//   let time = hour + " " + minute + " " + ampm;
-
-//   let new_event = {
-//     Title: title,
-//     Date: date,
-//     Time: time,
-//   };
-//   db.collection("events").add(new_event);
-
-//   db.collection("events")
-//     .get()
-//     .then((response) => {
-//       let element = response.docs;
-//       element.forEach((e) => {
-//         console.log(e.data().Title);
-//       });
-//     });
-// });
-
-
-//------------------------EVENT EDITING & CREATING MODAL-----------------------
-
-// eventbtn.addEventListener("click", () => {
-//     event_modal.classList.add("is-active");
-// });
-
-// if (pageName == "index.html" || pageName == "events.html") {
-//     document.getElementById("#event_modalbg").addEventListener("click", () => {
-//         event_modal.classList.remove("is-active");
-//         r_e("event_form").reset();
-//     });
-// }
-
-// event_submit.addEventListener("click", () => {
-//     let title = document.querySelector("#title").innerHTML;
-//     let date = document.querySelector("#date").innerHTML;
-//     let hour = document.querySelector("#hour").innerHTML;
-//     let minute = document.querySelector("minute").innerHTML;
-//     let ampm = document.querySelector("ampm").innerHTML;
-//     let time = hour + " " + minute + " " + ampm;
-
-//     let new_event = {
-//         Title: title,
-//         Date: date,
-//         Time: time,
-//     };
-//     db.collection("events").add(new_event);
-
-//     db.collection("events")
-//         .get()
-//         .then((response) => {
-//             let element = response.docs;
-//             element.forEach((e) => {
-//                 console.log(e.data().Title);
-//             });
-//         });
-// });
-
-//create editing
-// function edit_doc(id1) {
-//     event_modal.classList.add("is-active");
-//     db.collection("events")
-//         .where(id, "==", id1)
-//         .get()
-//         .then((response) => {
-//             reloadEvents();
-//             // let e = response.docs;
-//             // let title = e.data().Title;
-//             // let time = e.data().Time;
-//             // let date = e.data().Date;
-//             // let newTime = time.split(" ");
-//             // document.querySelector("#title").innerHTML = title;
-//             // document.querySelector("#date").innerHTML = date;
-//             // document.querySelector("#hour").innerHTML = newTime[0];
-//             // document.querySelector("minute").innerHTML = newTime[1];
-//             // document.querySelector("ampm").innerHTML = newTime[2];
-//         });
-//     db.collection("events")
-//         .doc(id)
-//         .delete()
-//         .then(() => {
-//             console.log("Previous event has been deleted");
-//         });
-// }
-
 function del_doc(id) {
-    db.collection("events")
-        .doc(id)
-        .delete()
-        .then(() => {
-            reloadEvents();
-        });
+    $('#deleteModal').addClass("is-active");
+    $('#eventToDelete').attr("event_id", id);
 }
 
 //-------------------------EVENTS LOADING FUNCTIONALITY------------------------
@@ -376,6 +265,19 @@ function loadEvents(ID) {
     db.collection("events")
         .get()
         .then((response) => {
+            if (auth.currentUser) {
+                let addEventElem = document.createElement("div");
+                $(addEventElem).addClass("event event-add");
+                let addEventParagraph = document.createElement("p");
+                $(addEventParagraph).addClass("event-add-text");
+                let addEventText = document.createTextNode("Add Event");
+                addEventParagraph.appendChild(addEventText);
+                addEventElem.appendChild(addEventParagraph);
+                $(addEventElem).click(function () {
+                    event_modal.classList.add("is-active");
+                });
+                document.getElementById(ID).appendChild(addEventElem);
+            }
             let eventCard = "";
             let element = response.docs;
             element.forEach((e) => {
@@ -409,7 +311,6 @@ function loadEvents(ID) {
                     deleteButtonElem.appendChild(deleteIconElem);
                     $(deleteButtonElem).click(function () {
                         let id = $(this).attr("id");
-                        console.log(id);
                         del_doc(id);
                     });
                     buttonWrapperElem.appendChild(deleteButtonElem);
