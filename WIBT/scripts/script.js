@@ -33,92 +33,119 @@ function return_element(id) {
     return document.querySelector(`#${id}`);
 }
 
-//--------------------------------NAVBAR FUNCTIONALITY-------------------------
-
-
 //--------------------------------SIGN UP FUNCTIONALITY------------------------
 
+// Set up sign up variables
 let signinbtn = document.querySelector("#signinbtn");
 let signin_modal = document.querySelector("#signin_modal");
 let signin_modalbg = document.querySelector("#signin_modalbg");
 let event_modal = document.querySelector("#event_modal");
-
-login_submit.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    let email = return_element("email_").value;
-    let password = return_element("password_").value;
-    auth.createUserWithEmailAndPassword(email, password).then((user) => {
-        //console.log(`${user.user.email}  is created`);
-
-    });
-    //.catch(err => {
-    //signup_modal.querySelector('.error').innerHTML = err.message;
-
-    // })
-    signin_modal.classList.remove("is-active");
-    //console.log("hello");
-    return_element("signinbtn").innerHTML = `Log Out`;
-    //r_e('user_add').innerHTML = `Add User`;
-    UC = 1;
-    return_element("signin_form").reset();
-});
-
-function UserCheck() {
-    if (UC == 0) {
-        return_element("signinbtn").innerHTML = `Admin Portal`;
-        //        user_add_div.classList.add('is-hidden');
-    } else if (UC == 1) {
-        return_element("signinbtn").innerHTML = `Log Out`;
-        //      user_add_div.classList.remove('is-hidden');
-    }
-}
 let user_add = document.querySelector("#user_add");
+let actual_user_add = document.querySelector("#actual_user_add");
 let cancel_btn = document.querySelector("#cancel_btn");
+let login_submit = document.querySelector("#login_submit");
 
-
+// set up modal open
 signinbtn.addEventListener("click", () => {
     signin_modal.classList.add("is-active");
 });
 
-
+// set up modal closing
 signin_modalbg.addEventListener("click", () => {
+    submit_btn.classList.remove('is-hidden');
+    cancel_btn.classList.add('is-hidden');
+    if (auth.currentUser) {
+        email_bar.classList.add('is-hidden');
+        password_bar.classList.add('is-hidden');
+        user_add.classList.remove('is-hidden');
+    }
+    actual_user_add.classList.add('is-hidden');
+    signin_modal.querySelector('.error').innerHTML = "";
     signin_modal.classList.remove("is-active");
     return_element("signin_form").reset();
 });
 
+// Sign in Functionality
 login_submit.addEventListener("click", (e) => {
-
     if (auth.currentUser) {
-        auth.signOut().then(() => {
-
-            console.log("ahahahahah");
-        })
+        auth.signOut()
+            .then(() => {
+                signin_modal.classList.remove("is-active");
+                return_element("signin_form").reset();
+            })
+            .catch((error) => {
+                signin_modal.querySelector('.error').innerHTML = error.message;
+            });
     } else {
         e.preventDefault();
-        //alert('test');
         let email = return_element("email_").value;
         let password = return_element("password_").value;
-        auth.signInWithEmailAndPassword(email, password).then((user) => {
-            //console.log(`${user.user.email}  is created`);
-            console.log(user);
-        });
-        //.catch(err => {
-        //signup_modal.querySelector('.error').innerHTML = err.message;
-
-        // })
+        auth.signInWithEmailAndPassword(email, password)
+            .then((user) => {
+                signin_modal.classList.remove("is-active");
+                return_element("signin_form").reset();
+            })
+            .catch((error) => {
+                signin_modal.querySelector('.error').innerHTML = error.message;
+            });
     }
-    signin_modal.classList.remove("is-active");
+});
+
+// auto hide cancel btn
+cancel_btn.classList.add('is-hidden');
+
+// add new user functionality
+user_add.addEventListener("click", () => {
+    submit_btn.classList.add('is-hidden');
+    cancel_btn.classList.remove('is-hidden');
+    email_bar.classList.remove('is-hidden');
+    password_bar.classList.remove('is-hidden');
+    user_add.classList.add('is-hidden');
+    actual_user_add.classList.remove('is-hidden');
+});
+
+// handle submitting user to firestore
+actual_user_add.addEventListener("click", () => {
+    let email = return_element("email_").value;
+    let password = return_element("password_").value;
+    auth.createUserWithEmailAndPassword(email, password)
+        .then((user) => {
+            signin_modal.classList.remove("is-active");
+            return_element("signin_form").reset();
+            submit_btn.classList.remove('is-hidden');
+            cancel_btn.classList.add('is-hidden');
+            email_bar.classList.add('is-hidden');
+            password_bar.classList.add('is-hidden');
+            user_add.classList.remove('is-hidden');
+            actual_user_add.classList.add('is-hidden');
+            signin_modal.querySelector('.error').innerHTML = "";
+        })
+        .catch((error) => {
+            signin_modal.querySelector('.error').innerHTML = error.message;
+        });
+});
+
+// handle canceling add user
+cancel_btn.addEventListener("click", () => {
+    submit_btn.classList.remove('is-hidden');
+    cancel_btn.classList.add('is-hidden');
+    email_bar.classList.add('is-hidden');
+    password_bar.classList.add('is-hidden');
+    user_add.classList.remove('is-hidden');
+    actual_user_add.classList.add('is-hidden');
+    signin_modal.querySelector('.error').innerHTML = "";
     return_element("signin_form").reset();
 });
 
+// manage state
 auth.onAuthStateChanged(function (user) {
     if (user) {
-        console.log(user.email);
         return_element("signinbtn").innerHTML = user.email;
         user_add_div.classList.remove('is-hidden');
         email_bar.classList.add('is-hidden');
         password_bar.classList.add('is-hidden');
+        user_add.classList.remove('is-hidden');
+        signin_modal.querySelector('.error').innerHTML = "";
         return_element("login_submit").innerHTML = "Log Out";
         reloadEvents();
     } else {
@@ -126,45 +153,14 @@ auth.onAuthStateChanged(function (user) {
         user_add_div.classList.add('is-hidden');
         email_bar.classList.remove('is-hidden');
         password_bar.classList.remove('is-hidden');
+        signin_modal.querySelector('.error').innerHTML = "";
         return_element("login_submit").innerHTML = "Login";
         reloadEvents();
     }
 });
 
-cancel_btn.classList.add('is-hidden');
-var btn_counter = 0;
-user_add.addEventListener("click", () => {
-    if (btn_counter == 0) {
-        submit_btn.classList.add('is-hidden');
-        cancel_btn.classList.remove('is-hidden');
-        email_bar.classList.remove('is-hidden');
-        password_bar.classList.remove('is-hidden');
-        btn_counter = 1;
-    } else if (btn_counter == 1) {
-        let email = return_element("email_").value;
-        let password = return_element("password_").value;
-        auth.createUserWithEmailAndPassword(email, password).then((user) => {
-            //console.log(`${user.user.email}  is created`);
-            console.log(user);
-        });
-        btn_counter = 0;
-        signin_modal.classList.remove("is-active");
-        return_element("signin_form").reset();
-    }
-});
 
-cancel_btn.addEventListener("click", () => {
-    submit_btn.classList.remove('is-hidden');
-    cancel_btn.classList.add('is-hidden');
-    email_bar.classList.add('is-hidden');
-    password_bar.classList.add('is-hidden');
-    btn_counter = 0;
-
-});
-
-
-//------------------------EVENT EDITING & CREATING MODAL-----------------------
-
+//-------------------EVENT EDITING & CREATING MODAL FUNCTIONALITY--------------
 
 if (pageName == "index.html" || pageName == "events.html" || pageName == "") {
     //add new events
