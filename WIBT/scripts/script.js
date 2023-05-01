@@ -91,6 +91,7 @@ login_submit.addEventListener("click", (e) => {
   signin_modal.classList.remove("is-active");
   //console.log("hello");
   r_e("signinbtn").innerHTML = `Log Out`;
+  eventbtn.classList.add("is-active");
   //r_e('user_add').innerHTML = `Add User`;
   UC = 1;
   r_e("signin_form").reset();
@@ -122,14 +123,14 @@ signin_modalbg.addEventListener("click", () => {
   r_e("signin_form").reset();
 });
 
-eventbtn.addEventListener("click", () => {
-  event_modal.classList.add("is-active");
-});
+// eventbtn.addEventListener("click", () => {
+//   event_modal.classList.add("is-active");
+// });
 
-event_modalbg.addEventListener("click", () => {
-  event_modal.classList.remove("is-active");
-  r_e("event_form").reset();
-});
+// event_modalbg.addEventListener("click", () => {
+//   event_modal.classList.remove("is-active");
+//   r_e("event_form").reset();
+// });
 
 ///user sign in
 
@@ -140,30 +141,30 @@ event_modalbg.addEventListener("click", () => {
 // ...
 //})
 
-event_submit.addEventListener("click", () => {
-  let title = document.querySelector("#title").innerHTML;
-  let date = document.querySelector("#date").innerHTML;
-  let hour = document.querySelector("#hour").innerHTML;
-  let minute = document.querySelector("minute").innerHTML;
-  let ampm = document.querySelector("ampm").innerHTML;
-  let time = hour + " " + minute + " " + ampm;
+// event_submit.addEventListener("click", () => {
+//   let title = document.querySelector("#title").innerHTML;
+//   let date = document.querySelector("#date").innerHTML;
+//   let hour = document.querySelector("#hour").innerHTML;
+//   let minute = document.querySelector("minute").innerHTML;
+//   let ampm = document.querySelector("ampm").innerHTML;
+//   let time = hour + " " + minute + " " + ampm;
 
-  let new_event = {
-    Title: title,
-    Date: date,
-    Time: time,
-  };
-  db.collection("events").add(new_event);
+//   let new_event = {
+//     Title: title,
+//     Date: date,
+//     Time: time,
+//   };
+//   db.collection("events").add(new_event);
 
-  db.collection("events")
-    .get()
-    .then((response) => {
-      let element = response.docs;
-      element.forEach((e) => {
-        console.log(e.data().Title);
-      });
-    });
-});
+//   db.collection("events")
+//     .get()
+//     .then((response) => {
+//       let element = response.docs;
+//       element.forEach((e) => {
+//         console.log(e.data().Title);
+//       });
+//     });
+// });
 // let homeEvents = document.querySelector("#homeEvents");
 // let eventsEvents = document.querySelector("#eventsEvents");
 // let previousSpeakers = document.querySelector("#previousSpeakers");
@@ -265,31 +266,63 @@ console.log(d > d1);
 let c = "Spring 2023";
 c = c.split(" ");
 console.log(c);
-origin / dynamic;
+// origin / dynamic;
 
 // let homeEvents = document.querySelector("#homeEvents");
 // let eventsEvents = document.querySelector("#eventsEvents");
 // let previousSpeakers = document.querySelector("#previousSpeakers");
+//delete document
 
 function eventsEvents1(ID) {
-  db.collection("INSERTNAME")
+  db.collection("events")
     .get()
     .then((response) => {
       let eventCard = "";
       let element = response.docs;
       element.forEach((e) => {
-        let title = e.data().TITLE;
-        let time = e.data().TIME;
-        let docid = (e.data().eventCard += `<div class="mini-card">`);
+        let title = e.data().Title;
+        let time = e.data().Time;
+        let date = e.data().Date;
+        eventCard += `<div class="mini-card">`;
         eventCard += `<p class="mini-card-title">${title}</p>`;
-        eventCard += `<div class="event-date">${time}</div>`;
-        eventCard +=
-          '<p><button class="button is-small is-rounded"><i class="fas fa-ban"></i></button><button class="button is-small is-rounded"><i class="fas fa-pencil"></i></button></p>';
+        eventCard += `<div class="event-date"><b>${time}</b>&nbsp&nbsp&nbsp${date}</div>`;
+        eventCard += `<p><button class="button is-small is-rounded delete-button m-0" onclick = "del_doc('${e.id}')"><i class="fas fa-ban"></i></button><button class="button is-small is-rounded m-0" onclick = "edit_doc('${e.id}1')"><i class="fas fa-pencil"></i></button></p>`;
         eventCard += `</div>`;
         document.querySelector(ID).innerHTML = eventCard;
       });
     });
 }
+// //create editing
+// function edit_doc(id1) {
+//   event_modal.classList.add("is-active");
+//   db.collection("events")
+//     .where(id, "==", id1)
+//     .get()
+//     .then((response) => {
+//       let e = response.docs;
+//       let title = e.data().Title;
+//       let time = e.data().Time;
+//       let date = e.data().Date;
+//       let newTime = time.split(" ");
+//       document.querySelector("#title").innerHTML = title;
+//       document.querySelector("#date").innerHTML = date;
+//       document.querySelector("#hour").innerHTML = newTime[0];
+//       document.querySelector("minute").innerHTML = newTime[1];
+//       document.querySelector("ampm").innerHTML = newTime[2];
+//     });
+// }
+// // edit_doc("mEokhz4zCIpNBY9MXrq7");
+// //onclick deletion function
+// function del_doc(id) {
+//   db.collection("events")
+//     .doc(id)
+//     .delete()
+//     .then(() => {
+//       console.log("deleted event");
+//     });
+// }
+
+eventsEvents1("#homeEventsTest");
 
 function eventsEvents2() {
   let eventCard = "";
@@ -297,9 +330,9 @@ function eventsEvents2() {
   eventCard += `<p class="mini-card-title">test</p>`;
   eventCard += `<div class="event-date">test</div>`;
   eventCard += `</div>`;
+  console.log(eventCard);
   document.querySelector("#homeEventsTest").innerHTML = eventCard;
 }
-eventsEvents2();
 
 function previousSpeakers1() {
   db.collection("INSERTNAME")
