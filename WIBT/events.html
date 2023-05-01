@@ -236,7 +236,7 @@
     </div>
   </div>
 
-  <!--Event Add Modal-->
+  <!--EVENT ADD MODAL-->
   <div class="modal" id="event_modal">
     <div class="modal-background" id="event_modalbg"></div>
     <div class="modal-content p-6 has-background-white">
@@ -248,14 +248,12 @@
           <div class="control">
             <input type="text" id="title">
           </div>
-
-
         </div>
         <!--Date-->
         <div class="field">
           <div class="container">
             <label class="label">Date</label>
-            <input type="text" name="foo" id="date">
+            <input class="date" type="text" name="foo" id="date">
           </div>
         </div>
         <!--Time-->
@@ -272,16 +270,102 @@
             </select>
           </div>
           </p>
-
         </div>
-
-        <!-- submit -->
-        <div class="field">
-          <div class="control">
-            <a class="m-3 is-link" id="event_submit">Add</a>
+        <div class="level" style="margin-top:1em;">
+          <!-- add -->
+          <div class="level-item">
+            <div class="control">
+              <a class="m-3 is-link" id="event_submit">Add</a>
+            </div>
+          </div>
+          <!-- cancel -->
+          <div class="level-item">
+            <div class="control">
+              <a class="m-3 is-link" id="close_add">Cancel</a>
+            </div>
           </div>
         </div>
         <div class="error has-text-danger">
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--EVENT EDIT MODAL-->
+  <div class="modal" id="event_edit_modal">
+    <div class="modal-background" id="event_edit_modalbg"></div>
+    <div class="modal-content p-6 has-background-white">
+      <h1 class="is-size-3 title">Edit Event</h1>
+      <div id="eventToEdit">
+      </div>
+      <form id="event_edit_form">
+        <!-- event title-->
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input type="text" id="edit_title">
+          </div>
+        </div>
+        <!--Date-->
+        <div class="field">
+          <div class="container">
+            <label class="label">Date</label>
+            <input class="date" type="text" name="foo" id="edit_date">
+          </div>
+        </div>
+        <!--Time-->
+        <div class="field">
+          <label class="label">Hour</label>
+          <input type="text" id="edit_hour">
+          <label class="label">Minute</label>
+          <input type="text" id="edit_minute">
+          <p><br>
+          <div class="select">
+            <select id="edit_ampm">
+              <option>PM</option>
+              <option>AM</option>
+            </select>
+          </div>
+          </p>
+
+        </div>
+        <!-- submit -->
+        <div class="field">
+          <div class="control">
+            <a class="m-3 is-link" id="event_edit_submit">Submit Changes</a>
+          </div>
+        </div>
+        <div class="field" style="margin-top:1em;">
+          <div class="control">
+            <a class="m-3 is-link" id="event_edit_close">Cancel</a>
+          </div>
+        </div>
+        <div class="error has-text-danger">
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Event Delete Modal -->
+  <div class="modal" id="deleteModal">
+    <div class="modal-background" id="delete_modalbg"></div>
+    <div class="modal-content p-6 has-background-white">
+      <h1 style="font-size:20px;color:#424242;font-weight: bold;margin-bottom:1em;">Are you sure you want to delete this
+        event?</h1>
+      <div id="eventToDelete">
+      </div>
+      <form id="event_delete_form">
+        <div class="level">
+          <!-- delete -->
+          <div class="level-item">
+            <div class="control">
+              <a class="m-3 is-link" id="event_delete">Delete</a>
+            </div>
+          </div>
+          <!-- cancel -->
+          <div class="level-item">
+            <div class="control">
+              <a class="m-3 is-link" id="close_delete">Cancel</a>
+            </div>
+          </div>
         </div>
       </form>
     </div>
