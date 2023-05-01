@@ -1,3 +1,4 @@
+// Configuration for WIBT DB
 const firebaseConfig = {
     apiKey: "AIzaSyABqmr8_UbI6eoET593lRbqvmB_XxUIIMY",
     authDomain: "wibt-website.firebaseapp.com",
@@ -18,14 +19,21 @@ let urlArray = window.location.href.split('/');
 let pageName = urlArray[urlArray.length - 1];
 
 $(document).ready(function () {
-    // Check for click events on the navbar burger icon
+    // Enable responsive navbar for mobile viewing
     $(".navbar-burger").click(function () {
         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
         $(".navbar-burger").toggleClass("is-active");
         $(".navbar-menu").toggleClass("is-active");
     });
+    // ensure navbar is appropiately updated
     updateNavLinks();
 });
+
+//--------------------------------HELPER FUNCTIONS-----------------------------
+
+function return_element(id) {
+    return document.querySelector(`#${id}`);
+}
 
 //--------------------------------NAVBAR FUNCTIONALITY-------------------------
 
@@ -35,19 +43,7 @@ function updateNavLinks() {
     $("#" + pageName).addClass("active");
 }
 
-function myFunc(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
-
 //--------------------------------SIGN UP FUNCTIONALITY------------------------
-function r_e(id) {
-    return document.querySelector(`#${id}`);
-}
 
 let signinbtn = document.querySelector("#signinbtn");
 let signin_modal = document.querySelector("#signin_modal");
@@ -58,11 +54,11 @@ login_submit.addEventListener("click", (e) => {
     e.preventDefault();
     //alert('test');
 
-    let email = r_e("email_").value;
-    let password = r_e("password_").value;
+    let email = return_element("email_").value;
+    let password = return_element("password_").value;
     auth.createUserWithEmailAndPassword(email, password).then((user) => {
         //console.log(`${user.user.email}  is created`);
-        console.log(user);
+
     });
     //.catch(err => {
     //signup_modal.querySelector('.error').innerHTML = err.message;
@@ -70,18 +66,18 @@ login_submit.addEventListener("click", (e) => {
     // })
     signin_modal.classList.remove("is-active");
     //console.log("hello");
-    r_e("signinbtn").innerHTML = `Log Out`;
+    return_element("signinbtn").innerHTML = `Log Out`;
     //r_e('user_add').innerHTML = `Add User`;
     UC = 1;
-    r_e("signin_form").reset();
+    return_element("signin_form").reset();
 });
 
 function UserCheck() {
     if (UC == 0) {
-        r_e("signinbtn").innerHTML = `Admin Portal`;
+        return_element("signinbtn").innerHTML = `Admin Portal`;
         //        user_add_div.classList.add('is-hidden');
     } else if (UC == 1) {
-        r_e("signinbtn").innerHTML = `Log Out`;
+        return_element("signinbtn").innerHTML = `Log Out`;
         //      user_add_div.classList.remove('is-hidden');
     }
 }
@@ -96,7 +92,7 @@ signinbtn.addEventListener("click", () => {
 
 signin_modalbg.addEventListener("click", () => {
     signin_modal.classList.remove("is-active");
-    r_e("signin_form").reset();
+    return_element("signin_form").reset();
 });
 
 login_submit.addEventListener("click", (e) => {
@@ -109,8 +105,8 @@ login_submit.addEventListener("click", (e) => {
     } else {
         e.preventDefault();
         //alert('test');
-        let email = r_e("email_").value;
-        let password = r_e("password_").value;
+        let email = return_element("email_").value;
+        let password = return_element("password_").value;
         auth.signInWithEmailAndPassword(email, password).then((user) => {
             //console.log(`${user.user.email}  is created`);
             console.log(user);
@@ -121,24 +117,24 @@ login_submit.addEventListener("click", (e) => {
         // })
     }
     signin_modal.classList.remove("is-active");
-    r_e("signin_form").reset();
+    return_element("signin_form").reset();
 });
 
 auth.onAuthStateChanged(function (user) {
     if (user) {
         console.log(user.email);
-        r_e("signinbtn").innerHTML = user.email;
+        return_element("signinbtn").innerHTML = user.email;
         user_add_div.classList.remove('is-hidden');
         email_bar.classList.add('is-hidden');
         password_bar.classList.add('is-hidden');
-        r_e("login_submit").innerHTML = "Log Out";
+        return_element("login_submit").innerHTML = "Log Out";
         reloadEvents();
     } else {
-        r_e("signinbtn").innerHTML = `Admin Portal`;
+        return_element("signinbtn").innerHTML = `Admin Portal`;
         user_add_div.classList.add('is-hidden');
         email_bar.classList.remove('is-hidden');
         password_bar.classList.remove('is-hidden');
-        r_e("login_submit").innerHTML = "Login";
+        return_element("login_submit").innerHTML = "Login";
         reloadEvents();
     }
 });
@@ -153,15 +149,15 @@ user_add.addEventListener("click", () => {
         password_bar.classList.remove('is-hidden');
         btn_counter = 1;
     } else if (btn_counter == 1) {
-        let email = r_e("email_").value;
-        let password = r_e("password_").value;
+        let email = return_element("email_").value;
+        let password = return_element("password_").value;
         auth.createUserWithEmailAndPassword(email, password).then((user) => {
             //console.log(`${user.user.email}  is created`);
             console.log(user);
         });
         btn_counter = 0;
         signin_modal.classList.remove("is-active");
-        r_e("signin_form").reset();
+        return_element("signin_form").reset();
     }
 });
 
@@ -186,13 +182,13 @@ if (pageName == "index.html" || pageName == "events.html") {
 
     document.getElementById("event_modalbg").addEventListener("click", () => {
         event_modal.classList.remove("is-active");
-        r_e("event_form").reset();
+        return_element("event_form").reset();
         $('#addError').text("");
     });
 
     document.getElementById("event_edit_modalbg").addEventListener("click", () => {
         $('#event_edit_modal').removeClass("is-active");
-        r_e("event_edit_form").reset();
+        return_element("event_edit_form").reset();
         $('#editError').text("");
     });
 
@@ -210,7 +206,7 @@ if (pageName == "index.html" || pageName == "events.html") {
 
     $('#event_edit_close').click(function () {
         $('#event_edit_modal').removeClass("is-active");
-        r_e("event_edit_form").reset();
+        return_element("event_edit_form").reset();
         $('#editError').text("");
     });
 
@@ -224,7 +220,7 @@ if (pageName == "index.html" || pageName == "events.html") {
 
     $('#close_add').click(function () {
         event_modal.classList.remove("is-active");
-        r_e("event_form").reset();
+        return_element("event_form").reset();
         $('#addError').text("");
     });
 }

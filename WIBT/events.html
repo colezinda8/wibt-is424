@@ -380,7 +380,6 @@
           <span></span>
         </div>
       </div>
-
       <div id="navbarLinks" class="navbar-menu">
         <div class="navbar-end">
           <a id="index" href="index.html" class="navbar-item">Home</a>
@@ -637,6 +636,7 @@
     </div>
   </div>
   <!-- END OF PAGE CONTENT -->
+  <!-- FOOTER -->
   <footer class="footer" style="margin-top:20em">
     <div class="footer-item">&copy;Women in Business Technology 2023</div>
     <div class="footer-item">
@@ -667,7 +667,6 @@
 </body>
 <footer>
   <script type="module" src="scripts/script.js"></script>
-  <script src="scripts/events.js"></script>
   <script>
     $(document).ready(function () {
       // script for accordion functionality
@@ -691,14 +690,15 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.1/dist/js/datepicker-full.min.js"></script>
   <script>
+    // script for datepicker functionality
     $(document).ready(function () {
-      const elem = document.querySelector('input[name="foo"]');
-      const datepicker = new Datepicker(elem, {
-        // ...options
+      $('.date').each(function (i, obj) {
+        let datepicker = new Datepicker(obj, {
+          // ...options
+        });
       });
     });
   </script>
-
 </footer>
 
 </html>
