@@ -348,11 +348,14 @@ function loadEvents(ID) {
             }
 
             let docs = response.docs;
-            docs.sort((e) => {
-                return Date.parse(e.data().Date);
+            // sort by date ascending
+            docs.sort(function (a, b) {
+                return Date.parse(a.data().Date) - Date.parse(b.data().Date);
             });
+            // load events
             docs.forEach((e) => {
                 if (Date.parse(e.data().Date) < Date.now()) {
+                    // don't show if date is already past
                     return;
                 }
                 // create event
